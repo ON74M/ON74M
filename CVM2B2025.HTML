@@ -5,30 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HORÁRIO EF1 – 2ºB – TARDE 2025</title>
 <style>
-    /* ======= ESTILO GERAL ======= */
     body {
-        margin: 0;
-        padding: 0;
         font-family: Arial, sans-serif;
-        text-transform: uppercase;
-        overflow-x: hidden;
-        background: #f0f0f5;
-    }
+        margin: 0;
+        padding: 20px;
 
-    /* Canvas de fundo animado */
-    #bgCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+        /* Fundo quadriculado estilo caderno */
+        background-color: #fdfdfd;
+        background-image:
+            linear-gradient(to right, rgba(0,0,255,0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,0,0,0.15) 1px, transparent 1px);
+        background-size: 30px 30px; /* tamanho dos quadrados */
+        background-attachment: fixed;
     }
 
     h1 {
         text-align: center;
         color: #333;
-        margin: 20px 0;
+        margin-bottom: 20px;
+        text-transform: uppercase;
     }
 
     #controls {
@@ -84,23 +79,27 @@
         padding: 12px;
         text-align: center;
         border: 2px solid white;
+        text-transform: uppercase;
     }
+
     th {
         background-color: #00008B;
         color: white;
         font-size: 16px;
     }
+
     td {
         font-size: 14px;
         color: white;
     }
+
     td:first-child {
         background-color: #00008B;
         color: white;
         font-weight: bold;
     }
 
-    /* ======= CORES DAS DISCIPLINAS ======= */
+    /* Cores das disciplinas */
     .ed-fisica { background-color: #2A70A3; }
     .ingles { background-color: #FF9900; }
     .ciencias { background-color: #00CC00; }
@@ -111,28 +110,25 @@
     .musica { background-color: #C4716D; }
     .arte { background-color: #FF7F50; }
 
-    footer {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 12px;
-        color: #333;
-        text-transform: none;
-    }
-
     @media (max-width: 768px) {
         table, th, td {
             font-size: 12px;
             padding: 8px;
         }
     }
+
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #444;
+        text-transform: uppercase;
+    }
 </style>
 </head>
 <body>
 
-<!-- Fundo animado -->
-<canvas id="bgCanvas"></canvas>
-
-<h1>HORÁRIO EF1 – 2ºB – 2025</h1>
+<h1>HORÁRIO EF1 – 2ºB – TARDE 2025</h1>
 
 <div id="controls">
     <button id="btnFull" onclick="showFullTable()">MOSTRAR TABELA COMPLETA</button>
@@ -213,111 +209,81 @@
 </div>
 
 <footer>
-    COPYRIGHT © N74 - <span id="datetime"></span>
+    COPYRIGHT © N74 – <span id="clock"></span>
 </footer>
 
 <script>
-/* ========= CONTROLE DE TABELA ========= */
-const table=document.getElementById('horarioTable');
-const buttons=document.querySelectorAll('#controls button');
-const btnFull=document.getElementById('btnFull');
-const btnDay=document.getElementById('btnDay');
+const table = document.getElementById('horarioTable');
+const buttons = document.querySelectorAll('#controls button');
+const btnFull = document.getElementById('btnFull');
+const btnDay = document.getElementById('btnDay');
 
-function setActive(button){
-  buttons.forEach(b=>b.classList.remove('active'));
-  button.classList.add('active');
+function setActive(button) {
+    buttons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
 }
 
-function showFullTable(){
-  setActive(btnFull);
-  table.classList.remove('compacto');
-  table.style.tableLayout='fixed';
+function showFullTable() {
+    setActive(btnFull);
+    table.classList.remove('compacto');
+    table.style.tableLayout = 'fixed';
+    const ths = table.querySelectorAll('thead th');
+    const trs = table.querySelectorAll('tbody tr');
+    ths.forEach(th => { th.style.display = ''; th.style.width = ''; });
+    trs.forEach(tr => tr.querySelectorAll('td').forEach(td => { td.style.display = ''; td.style.width = ''; }));
+}
 
-  const ths=table.querySelectorAll('thead th');
-  const trs=table.querySelectorAll('tbody tr');
-
-  ths.forEach(th=>{ th.style.display=''; th.style.width=''; });
-  trs.forEach(tr=>{
-    tr.querySelectorAll('td').forEach(td=>{
-      td.style.display='';
-      td.style.width='';
+function showCurrentDay() {
+    setActive(btnDay);
+    table.classList.add('compacto');
+    table.style.tableLayout = 'auto';
+    const ths = table.querySelectorAll('thead th');
+    const trs = table.querySelectorAll('tbody tr');
+    const hoje = new Date().getDay();
+    let colIndex = (hoje >= 1 && hoje <= 5) ? hoje : 1;
+    const btnWidth = buttons[0].offsetWidth + "px";
+    ths.forEach((th, index) => {
+        if (index === 0 || index === colIndex) {
+            th.style.display = '';
+            th.style.width = btnWidth;
+        } else th.style.display = 'none';
     });
-  });
-}
-
-function showCurrentDay(){
-  setActive(btnDay);
-  table.classList.add('compacto');
-  table.style.tableLayout='auto';
-
-  const hoje=new Date().getDay();
-  const colIndex=(hoje>=1 && hoje<=5)?hoje:1;
-  const btnWidth=buttons[0].offsetWidth+"px";
-
-  table.querySelectorAll('thead th').forEach((th,i)=>{
-    if(i===0 || i===colIndex){ th.style.display=''; th.style.width=btnWidth; }
-    else{ th.style.display='none'; }
-  });
-  table.querySelectorAll('tbody tr').forEach(tr=>{
-    tr.querySelectorAll('td').forEach((td,i)=>{
-      if(i===0 || i===colIndex){ td.style.display=''; td.style.width=btnWidth; }
-      else{ td.style.display='none'; }
+    trs.forEach(tr => {
+        tr.querySelectorAll('td').forEach((td, index) => {
+            if (index === 0 || index === colIndex) {
+                td.style.display = '';
+                td.style.width = btnWidth;
+            } else td.style.display = 'none';
+        });
     });
-  });
 }
+
+// Exibir o dia atual ao carregar
 showCurrentDay();
 
-/* ========= RELÓGIO ========= */
-function updateDateTime(){
-  const now=new Date();
-  document.getElementById("datetime").textContent=
-    now.toLocaleDateString("pt-BR",{weekday:"long",year:"numeric",month:"long",day:"numeric"})+
-    " "+now.toLocaleTimeString("pt-BR");
+// Relógio em tempo real de Brasília
+function updateClock() {
+    const now = new Date();
+    const options = {
+        timeZone: "America/Sao_Paulo",
+        hour: "2-digit", minute: "2-digit", second: "2-digit",
+        day: "2-digit", month: "2-digit", year: "numeric"
+    };
+    document.getElementById("clock").textContent = now.toLocaleString("pt-BR", options);
 }
-setInterval(updateDateTime,1000);
-updateDateTime();
+setInterval(updateClock, 1000);
+updateClock();
 
-/* ========= FUNDO ANIMADO: CHUVA DE PINGOS ========= */
-const canvas=document.getElementById('bgCanvas');
-const ctx=canvas.getContext('2d');
-let width,height;
-function resize(){ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; }
-window.addEventListener('resize',resize);
-resize();
-
-const drops=[];
-for(let i=0;i<80;i++){
-  drops.push({
-    x:Math.random()*width,
-    y:Math.random()*height,
-    r:Math.random()*8+3,
-    c:`hsl(${Math.random()*360},70%,60%)`,
-    s:Math.random()*2+1
-  });
-}
-function animate(){
-  ctx.clearRect(0,0,width,height);
-  drops.forEach(d=>{
-    ctx.beginPath();
-    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
-    ctx.fillStyle=d.c;
-    ctx.fill();
-    d.y+=d.s;
-    if(d.y>height) d.y=-d.r;
-  });
-  requestAnimationFrame(animate);
-}
-animate();
-
-/* ========= SEGURANÇA BÁSICA ========= */
-document.addEventListener('keydown',function(e){
-  if(e.ctrlKey && (e.key==='u'||e.key==='U')){ e.preventDefault(); alert('NÃO VAI PERDER A HORA'); }
-  if(e.key==='F12'){ e.preventDefault(); alert('NÃO VAI PERDER A HORA'); }
+// Bloqueio leve para curiosos
+document.addEventListener('keydown', e => {
+    if ((e.ctrlKey && (e.key === 'u' || e.key === 'U')) || e.key === 'F12') {
+        e.preventDefault(); alert('NÃO VAI PERDER A HORA');
+    }
 });
-document.addEventListener('contextmenu',function(e){
-  e.preventDefault();
-  alert('NÃO VAI PERDER A HORA');
+document.addEventListener('contextmenu', e => {
+    e.preventDefault(); alert('NÃO VAI PERDER A HORA');
 });
 </script>
+
 </body>
 </html>
