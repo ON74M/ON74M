@@ -5,113 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HORÁRIO EF1 – 2ºB – TARDE 2025</title>
 <style>
-/* ================== Fundo Papel de Parede Infantil ================== */
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    margin: 0;
-    position: relative;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #FFDAB9, #E0FFFF);
-    overflow-x: hidden;
-    text-transform: uppercase; /* todas as letras em maiúsculas */
-}
+    /* ======= ESTILO GERAL ======= */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        text-transform: uppercase;
+        overflow-x: hidden;
+        background: #f0f0f5;
+    }
 
-/* Canvas para traços tipo lápis */
-#bgCanvas {
-    position: fixed;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-    pointer-events:none;
-}
+    /* Canvas de fundo animado */
+    #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-/* ================== Cabeçalho ================== */
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+    h1 {
+        text-align: center;
+        color: #333;
+        margin: 20px 0;
+    }
 
-/* ================== Botões ================== */
-#controls { text-align:center; margin-bottom:15px; }
-button {
-    padding:10px 20px; margin:5px;
-    font-size:14px; cursor:pointer;
-    border:none; border-radius:5px;
-    background-color:#00008B;
-    color:white; transition: background 0.3s;
-    font-weight: normal;
-}
-button:hover { background-color:#3333FF; }
-button.active { font-weight:bold; }
+    #controls {
+        text-align: center;
+        margin-bottom: 15px;
+    }
 
-/* ================== Tabela ================== */
-.table-container {
-    overflow-x:auto;
-    -webkit-overflow-scrolling: touch;
-    text-align:center;
-    padding:10px;
-    border-radius:15px;
-}
-table {
-    min-width:700px;
-    border-collapse:separate;
-    border-spacing:0;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    table-layout:fixed;
-    width:100%;
-    margin:0 auto;
-    transition:all 0.3s ease-in-out;
-}
-table.compacto { min-width:unset; width:auto; }
-th, td {
-    padding:12px;
-    text-align:center;
-    border:2px solid white;
-    text-transform: uppercase; /* todas as letras em maiúsculas */
-}
-th {
-    background-color:#00008B;
-    color:white;
-    font-size:16px;
-}
-td {
-    font-size:14px;
-    color:white;
-}
-td:first-child { background-color:#00008B; color:white; font-weight:bold; }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #00008B;
+        color: white;
+        transition: background 0.3s;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+    button:hover {
+        background-color: #3333ff;
+    }
+    button.active {
+        font-weight: bold;
+    }
 
-/* ================== Cores das disciplinas ================== */
-.ed-fisica { background-color:#2A70A3; }
-.ingles { background-color:#FF9900; }
-.ciencias { background-color:#00CC00; }
-.lanche { background-color:#FFFF00; color:#FF0000; }
-.matematica { background-color:#B3B2B7; }
-.portugues { background-color:#E60000; }
-.hist-geo { background-color:#0E7E70; }
-.musica { background-color:#C4716D; }
-.arte { background-color:#FF7F50; }
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        text-align: center;
+    }
 
-/* ================== Rodapé ================== */
-footer { text-align:center; margin-top:20px; color:#333; font-size:14px; }
+    table {
+        min-width: 700px;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        table-layout: fixed;
+        word-wrap: break-word;
+        width: 100%;
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+    }
+    table.compacto {
+        min-width: unset;
+        width: auto;
+    }
 
-/* ================== Responsivo ================== */
-@media(max-width:768px){table, th, td{font-size:12px; padding:8px;}}
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border: 2px solid white;
+    }
+    th {
+        background-color: #00008B;
+        color: white;
+        font-size: 16px;
+    }
+    td {
+        font-size: 14px;
+        color: white;
+    }
+    td:first-child {
+        background-color: #00008B;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* ======= CORES DAS DISCIPLINAS ======= */
+    .ed-fisica { background-color: #2A70A3; }
+    .ingles { background-color: #FF9900; }
+    .ciencias { background-color: #00CC00; }
+    .lanche { background-color: #FFFF00; color: #FF0000; }
+    .matematica { background-color: #B3B2B7; }
+    .portugues { background-color: #E60000; }
+    .hist-geo { background-color: #0E7E70; }
+    .musica { background-color: #C4716D; }
+    .arte { background-color: #FF7F50; }
+
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #333;
+        text-transform: none;
+    }
+
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 12px;
+            padding: 8px;
+        }
+    }
 </style>
 </head>
 <body>
 
+<!-- Fundo animado -->
 <canvas id="bgCanvas"></canvas>
 
 <h1>HORÁRIO EF1 – 2ºB – 2025</h1>
 
 <div id="controls">
-    <button id="btnFull" onclick="showFullTable()">Mostrar Tabela Completa</button>
-    <button id="btnDay" onclick="showCurrentDay()">Mostrar Apenas o Dia Atual</button>
+    <button id="btnFull" onclick="showFullTable()">MOSTRAR TABELA COMPLETA</button>
+    <button id="btnDay" onclick="showCurrentDay()">MOSTRAR APENAS O DIA ATUAL</button>
 </div>
 
 <div class="table-container">
@@ -127,67 +152,172 @@ footer { text-align:center; margin-top:20px; color:#333; font-size:14px; }
         </tr>
     </thead>
     <tbody>
-        <tr><td>13:10–14:00</td><td class="ed-fisica">ED. FÍSICA</td><td class="hist-geo">HIST/GEO</td><td class="musica">MÚSICA</td><td class="portugues">PORTUGUÊS</td><td class="portugues">PORTUGUÊS</td></tr>
-        <tr><td>14:00–14:50</td><td class="ingles">INGLÊS</td><td class="ingles">INGLÊS</td><td class="ingles">INGLÊS</td><td class="ingles">INGLÊS</td><td class="ingles">INGLÊS</td></tr>
-        <tr><td>14:50–15:10</td><td class="ciencias">CIÊNCIAS</td><td class="hist-geo">HIST/GEO</td><td class="ciencias">CIÊNCIAS</td><td class="portugues">PORTUGUÊS</td><td class="matematica">MATEMÁTICA</td></tr>
-        <tr><td>15:10–15:30</td><td class="lanche">LANCHE</td><td class="lanche">LANCHE</td><td class="lanche">LANCHE</td><td class="lanche">LANCHE</td><td class="lanche">LANCHE</td></tr>
-        <tr><td>15:30–16:00</td><td class="ciencias">CIÊNCIAS</td><td class="hist-geo">HIST/GEO</td><td class="ciencias">CIÊNCIAS</td><td class="portugues">PORTUGUÊS</td><td class="matematica">MATEMÁTICA</td></tr>
-        <tr><td>16:00–16:50</td><td class="matematica">MATEMÁTICA</td><td class="portugues">PORTUGUÊS</td><td class="matematica">MATEMÁTICA</td><td class="hist-geo">HIST/GEO</td><td class="matematica">MATEMÁTICA</td></tr>
-        <tr><td>16:50–17:40</td><td class="matematica">MATEMÁTICA</td><td class="portugues">PORTUGUÊS</td><td class="matematica">MATEMÁTICA</td><td class="arte">ARTE</td><td class="ciencias">CIÊNCIAS</td></tr>
+        <tr>
+            <td>13:10–14:00</td>
+            <td class="ed-fisica">ED. FÍSICA</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="musica">MÚSICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="portugues">PORTUGUÊS</td>
+        </tr>
+        <tr>
+            <td>14:00–14:50</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+        </tr>
+        <tr>
+            <td>14:50–15:10</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>15:10–15:30</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+        </tr>
+        <tr>
+            <td>15:30–16:00</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>16:00–16:50</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>16:50–17:40</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="arte">ARTE</td>
+            <td class="ciencias">CIÊNCIAS</td>
+        </tr>
     </tbody>
 </table>
 </div>
 
-<footer>&copy; N74 - <span id="datetime"></span></footer>
+<footer>
+    COPYRIGHT © N74 - <span id="datetime"></span>
+</footer>
 
 <script>
-// ================== Fundo com lápis coloridos ==================
-const canvas=document.getElementById('bgCanvas');const ctx=canvas.getContext('2d');
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-window.addEventListener('resize',resizeCanvas);resizeCanvas();
-const colors=['#FF5733','#33FF57','#3357FF','#FF33A1','#FFD133','#33FFF3','#FF8F33'];
-function drawStrokes(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=0;i<150;i++){const x=Math.random()*canvas.width;const y=Math.random()*canvas.height;const len=20+Math.random()*40;const angle=Math.random()*Math.PI*2;ctx.strokeStyle=colors[Math.floor(Math.random()*colors.length)];ctx.lineWidth=2+Math.random()*3;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+len*Math.cos(angle),y+len*Math.sin(angle));ctx.stroke();}}
-drawStrokes();
-
-// ================== Tabela e Botões ==================
+/* ========= CONTROLE DE TABELA ========= */
 const table=document.getElementById('horarioTable');
 const buttons=document.querySelectorAll('#controls button');
 const btnFull=document.getElementById('btnFull');
 const btnDay=document.getElementById('btnDay');
 
-function setActive(button){buttons.forEach(b=>b.classList.remove('active'));button.classList.add('active');}
+function setActive(button){
+  buttons.forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+}
 
 function showFullTable(){
-    setActive(btnFull);
-    table.classList.remove('compacto'); table.style.tableLayout='fixed';
-    table.querySelectorAll('thead th').forEach(th=>{th.style.display='';th.style.width='';});
-    table.querySelectorAll('tbody tr').forEach(tr=>tr.querySelectorAll('td').forEach(td=>{td.style.display='';td.style.width='';}));
+  setActive(btnFull);
+  table.classList.remove('compacto');
+  table.style.tableLayout='fixed';
+
+  const ths=table.querySelectorAll('thead th');
+  const trs=table.querySelectorAll('tbody tr');
+
+  ths.forEach(th=>{ th.style.display=''; th.style.width=''; });
+  trs.forEach(tr=>{
+    tr.querySelectorAll('td').forEach(td=>{
+      td.style.display='';
+      td.style.width='';
+    });
+  });
 }
 
 function showCurrentDay(){
-    setActive(btnDay); table.classList.add('compacto'); table.style.tableLayout='auto';
-    const hoje=new Date().getDay(); // domingo=0
-    let colIndex=(hoje>=1&&hoje<=5)?hoje:1;
-    const btnWidth=buttons[0].offsetWidth+'px';
-    table.querySelectorAll('thead th').forEach((th,i)=>{th.style.display=(i===0||i===colIndex)?'':'none'; if(i===0||i===colIndex) th.style.width=btnWidth;});
-    table.querySelectorAll('tbody tr').forEach(tr=>tr.querySelectorAll('td').forEach((td,i)=>{td.style.display=(i===0||i===colIndex)?'':'none'; if(i===0||i===colIndex) td.style.width=btnWidth;}));
+  setActive(btnDay);
+  table.classList.add('compacto');
+  table.style.tableLayout='auto';
+
+  const hoje=new Date().getDay();
+  const colIndex=(hoje>=1 && hoje<=5)?hoje:1;
+  const btnWidth=buttons[0].offsetWidth+"px";
+
+  table.querySelectorAll('thead th').forEach((th,i)=>{
+    if(i===0 || i===colIndex){ th.style.display=''; th.style.width=btnWidth; }
+    else{ th.style.display='none'; }
+  });
+  table.querySelectorAll('tbody tr').forEach(tr=>{
+    tr.querySelectorAll('td').forEach((td,i)=>{
+      if(i===0 || i===colIndex){ td.style.display=''; td.style.width=btnWidth; }
+      else{ td.style.display='none'; }
+    });
+  });
 }
+showCurrentDay();
 
-showCurrentDay(); // exibir dia atual
-
-// ================== Relógio em tempo real ==================
+/* ========= RELÓGIO ========= */
 function updateDateTime(){
-    const options={timeZone:'America/Sao_Paulo',hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-    document.getElementById('datetime').textContent=new Intl.DateTimeFormat('pt-BR',options).format(new Date()).replace(',','');
+  const now=new Date();
+  document.getElementById("datetime").textContent=
+    now.toLocaleDateString("pt-BR",{weekday:"long",year:"numeric",month:"long",day:"numeric"})+
+    " "+now.toLocaleTimeString("pt-BR");
 }
 setInterval(updateDateTime,1000);
 updateDateTime();
 
-// ================== Segurança divertida ==================
-document.addEventListener('keydown',e=>{if(e.ctrlKey&&(e.key==='u'||e.key==='U')||e.key==='F12'){e.preventDefault();alert('NÃO VAI PERDER A HORA!');}});
-document.addEventListener('contextmenu',e=>{e.preventDefault();alert('NÃO VAI PERDER A HORA!');});
-</script>
+/* ========= FUNDO ANIMADO: CHUVA DE PINGOS ========= */
+const canvas=document.getElementById('bgCanvas');
+const ctx=canvas.getContext('2d');
+let width,height;
+function resize(){ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; }
+window.addEventListener('resize',resize);
+resize();
 
+const drops=[];
+for(let i=0;i<80;i++){
+  drops.push({
+    x:Math.random()*width,
+    y:Math.random()*height,
+    r:Math.random()*8+3,
+    c:`hsl(${Math.random()*360},70%,60%)`,
+    s:Math.random()*2+1
+  });
+}
+function animate(){
+  ctx.clearRect(0,0,width,height);
+  drops.forEach(d=>{
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle=d.c;
+    ctx.fill();
+    d.y+=d.s;
+    if(d.y>height) d.y=-d.r;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ========= SEGURANÇA BÁSICA ========= */
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey && (e.key==='u'||e.key==='U')){ e.preventDefault(); alert('NÃO VAI PERDER A HORA'); }
+  if(e.key==='F12'){ e.preventDefault(); alert('NÃO VAI PERDER A HORA'); }
+});
+document.addEventListener('contextmenu',function(e){
+  e.preventDefault();
+  alert('NÃO VAI PERDER A HORA');
+});
+</script>
 </body>
 </html>
-
