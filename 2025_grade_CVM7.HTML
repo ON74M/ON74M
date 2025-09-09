@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horário Ensino Fundamental 1 – 2º Ano B – Tarde 2025</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f5;
+        padding: 20px;
+        margin: 0;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    #controls {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #00008B;
+        color: white;
+        transition: background 0.3s;
+        font-weight: normal;
+    }
+    button:hover {
+        background-color: #3333ff;
+    }
+    button.active {
+        font-weight: bold; /* botão ativo fica em negrito */
+    }
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        text-align: center;
+    }
+    table {
+        min-width: 700px;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        table-layout: fixed;
+        word-wrap: break-word;
+        width: 100%;
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+    }
+    table.compacto {
+        min-width: unset;
+        width: auto;
+    }
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border: 2px solid white;
+    }
+    th {
+        background-color: #00008B;
+        color: white;
+        font-size: 16px;
+    }
+    td {
+        font-size: 14px;
+        color: white;
+    }
+    td:first-child {
+        background-color: #00008B;
+        color: white;
+        font-weight: bold;
+    }
+    /* Cores das disciplinas */
+    .ed-fisica { background-color: #87CEFA; }
+    .ingles { background-color: #FFA500; }
+    .ciencias { background-color: #90EE90; }
+    .lanche { background-color: #FFFF00; color: #FF0000; }
+    .matematica { background-color: #808080; }
+    .portugues { background-color: #FF0000; }
+    .hist-geo { background-color: #006400; }
+    .musica { background-color: #FF6666; }
+    .arte { background-color: #FF7F50; }
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 12px;
+            padding: 8px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Horário Ensino Fundamental 1 – 2º Ano B – Tarde 2025</h1>
+
+<div id="controls">
+    <button id="btnFull" onclick="showFullTable()">Mostrar Tabela Completa</button>
+    <button id="btnDay" onclick="showCurrentDay()">Mostrar Apenas o Dia Atual</button>
+</div>
+
+<div class="table-container">
+<table id="horarioTable">
+    <thead>
+        <tr>
+            <th>HORÁRIO</th>
+            <th>SEG</th>
+            <th>TER</th>
+            <th>QUA</th>
+            <th>QUI</th>
+            <th>SEX</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>13:10–14:00</td>
+            <td class="ed-fisica">ED. FÍSICA</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="musica">MÚSICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="portugues">PORTUGUÊS</td>
+        </tr>
+        <tr>
+            <td>14:00–14:50</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+            <td class="ingles">INGLÊS</td>
+        </tr>
+        <tr>
+            <td>14:50–15:10</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>15:10–15:30</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+            <td class="lanche">LANCHE</td>
+        </tr>
+        <tr>
+            <td>15:30–16:00</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="ciencias">CIÊNCIAS</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>16:00–16:50</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="hist-geo">HIST/GEO</td>
+            <td class="matematica">MATEMÁTICA</td>
+        </tr>
+        <tr>
+            <td>16:50–17:40</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="portugues">PORTUGUÊS</td>
+            <td class="matematica">MATEMÁTICA</td>
+            <td class="arte">ARTE</td>
+            <td class="ciencias">CIÊNCIAS</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<script>
+const table = document.getElementById('horarioTable');
+const buttons = document.querySelectorAll('#controls button');
+const btnFull = document.getElementById('btnFull');
+const btnDay = document.getElementById('btnDay');
+
+function setActive(button) {
+    buttons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+}
+
+function showFullTable() {
+    setActive(btnFull);
+    table.classList.remove('compacto');
+    table.style.tableLayout = 'fixed';
+
+    const ths = table.querySelectorAll('thead th');
+    const trs = table.querySelectorAll('tbody tr');
+
+    ths.forEach(th => {
+        th.style.display = '';
+        th.style.width = '';
+    });
+    trs.forEach(tr => {
+        tr.querySelectorAll('td').forEach(td => {
+            td.style.display = '';
+            td.style.width = '';
+        });
+    });
+}
+
+function showCurrentDay() {
+    setActive(btnDay);
+    table.classList.add('compacto');
+    table.style.tableLayout = 'auto';
+
+    const ths = table.querySelectorAll('thead th');
+    const trs = table.querySelectorAll('tbody tr');
+
+    const hoje = new Date().getDay();
+    let colIndex = (hoje >= 1 && hoje <= 5) ? hoje : 1;
+
+    const btnWidth = buttons[0].offsetWidth + "px";
+
+    ths.forEach((th, index) => {
+        if (index === 0 || index === colIndex) {
+            th.style.display = '';
+            th.style.width = btnWidth;
+        } else {
+            th.style.display = 'none';
+        }
+    });
+
+    trs.forEach(tr => {
+        tr.querySelectorAll('td').forEach((td, index) => {
+            if (index === 0 || index === colIndex) {
+                td.style.display = '';
+                td.style.width = btnWidth;
+            } else {
+                td.style.display = 'none';
+            }
+        });
+    });
+}
+
+// Exibir o dia atual ao carregar
+showCurrentDay();
+</script>
+
+</body>
+</html>
