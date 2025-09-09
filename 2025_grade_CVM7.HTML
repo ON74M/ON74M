@@ -102,8 +102,8 @@
 <h1>Horário EF1 – 2ºB – Tarde 2025</h1>
 
 <div id="controls">
-    <button id="btnFull" onclick="showFullTable()">Mostrar Tabela Completa</button>
-    <button id="btnDay" onclick="showCurrentDay()">Mostrar Apenas o Dia Atual</button>
+    <button id="btnFull" onclick="showFullTable()">SEMANA</button>
+    <button id="btnDay" onclick="showCurrentDay()">HOJE</button>
 </div>
 
 <div class="table-container">
@@ -256,21 +256,20 @@ showCurrentDay();
 document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
         e.preventDefault();
-        alert('CAFÉ');
+        alert(''PAUSA PARA O CAFÉ');
     }
     if (e.key === 'F12') {
         e.preventDefault();
-        alert('CAFÉ');
+        alert('PAUSA PARA O CAFÉ');
     }
 });
 
 // Bloqueia clique direito
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
-    alert('CAFÉ');
+    alert(''PAUSA PARA O CAFÉ');
 });
 </script>
 
 </body>
 </html>
-
