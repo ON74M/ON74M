@@ -246,6 +246,25 @@ function showCurrentDay() {
 
 // Exibir o dia atual ao carregar
 showCurrentDay();
+
+/* ================= Segurança básica ================= */
+// Bloqueia Ctrl+U e inspecionar
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+        alert('CAFÉ');
+    }
+    if (e.key === 'F12') {
+        e.preventDefault();
+        alert('CAFÉ');
+    }
+});
+
+// Bloqueia clique direito
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('CAFÉ');
+});
 </script>
 
 </body>
