@@ -9,13 +9,11 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 20px;
-
-        /* Fundo quadriculado estilo caderno */
         background-color: #fdfdfd;
         background-image:
             linear-gradient(to right, rgba(0,0,255,0.15) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255,0,0,0.15) 1px, transparent 1px);
-        background-size: 30px 30px; /* tamanho dos quadrados */
+        background-size: 30px 30px;
         background-attachment: fixed;
     }
 
@@ -44,12 +42,8 @@
         font-weight: normal;
         text-transform: uppercase;
     }
-    button:hover {
-        background-color: #3333ff;
-    }
-    button.active {
-        font-weight: bold;
-    }
+    button:hover { background-color: #3333ff; }
+    button.active { font-weight: bold; }
 
     .table-container {
         overflow-x: auto;
@@ -70,6 +64,7 @@
         margin: 0 auto;
         transition: all 0.3s ease-in-out;
     }
+
     table.compacto {
         min-width: unset;
         width: auto;
@@ -80,6 +75,7 @@
         text-align: center;
         border: 2px solid white;
         text-transform: uppercase;
+        vertical-align: middle;
     }
 
     th {
@@ -110,11 +106,43 @@
     .musica { background-color: #C4716D; }
     .arte { background-color: #FF7F50; }
 
-    @media (max-width: 768px) {
-        table, th, td {
-            font-size: 12px;
-            padding: 8px;
-        }
+    #provas {
+        display: none;
+        text-align: center;
+    }
+
+    #provas table {
+        min-width: 500px;
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+
+    #provas th, #provas td {
+        border: 2px solid white;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+
+    #provas th {
+        background-color: #00008B;
+        color: white;
+        text-align: center;
+    }
+
+    #provas td {
+        background-color: #B3B2B7;
+        color: black;
+        font-size: 13px;
+        line-height: 1.4em;
+    }
+
+    /* alinhamento central para DATA, DIA e DISCIPLINA */
+    #provas td:nth-child(1),
+    #provas td:nth-child(2),
+    #provas td:nth-child(3) {
+        text-align: center;
+        vertical-align: middle;
     }
 
     footer {
@@ -128,14 +156,15 @@
 </head>
 <body>
 
-<h1>HORÁRIO EF1 – 2ºB – 2025</h1>
+<h1>HORÁRIO EF1 – 2ºB – TARDE 2025</h1>
 
 <div id="controls">
-    <button id="btnFull" onclick="showFullTable()">MOSTRAR TABELA COMPLETA</button>
-    <button id="btnDay" onclick="showCurrentDay()">MOSTRAR APENAS O DIA ATUAL</button>
+    <button id="btnFull" onclick="showFullTable()">SEMANAL</button>
+    <button id="btnDay" onclick="showCurrentDay()">DIÁRIO</button>
+    <button id="btnProvas" onclick="showProvas()">VER PROVAS</button>
 </div>
 
-<div class="table-container">
+<div class="table-container" id="tabelaHorario">
 <table id="horarioTable">
     <thead>
         <tr>
@@ -208,15 +237,58 @@
 </table>
 </div>
 
+<div id="provas">
+    <h2>PROVAS TRIMESTRAIS – 3º TRIMESTRE – 2º ANO A E B - CADA PROVA TERÁ VALOR 10.0 (DEZ) - ESTUDAR O CADERNO ANGLO 4 (APOSTILA) E OS CADERNOS DE CADA DISCIPLINA.</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>DATA</th>
+                <th>DIA</th>
+                <th>DISCIPLINA</th>
+                <th>CONTEÚDO</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>06/11</td>
+                <td>QUINTA</td>
+                <td>PORTUGUÊS</td>
+                <td>ANGLO 4 PÁGINAS 11 ATÉ 41, LEITURA E INTERPRETAÇÃO DO LIVRO "RITA NÃO GRITA", CADERNO A PARTIR DO MÊS DE SETEMBRO.</td>
+            </tr>
+            <tr>
+                <td>07/11</td>
+                <td>SEXTA</td>
+                <td>HISTÓRIA / GEOGRAFIA</td>
+                <td>ANGLO 4 PÁGINAS 116 ATÉ 141, CADERNO A PARTIR DO MÊS DE SETEMBRO.</td>
+            </tr>
+            <tr>
+                <td>10/11</td>
+                <td>SEGUNDA</td>
+                <td>CIÊNCIAS</td>
+                <td>ANGLO 4 PÁGINAS 156 ATÉ 191, CADERNO A PARTIR DO MÊS DE SETEMBRO.</td>
+            </tr>
+            <tr>
+                <td>11/11</td>
+                <td>TERÇA</td>
+                <td>MATEMÁTICA</td>
+                <td>ANGLO 4 PÁGINAS 8 ATÉ 41, ESTUDAR OS PROBLEMAS DE ADIÇÃO, SUBTRAÇÃO, MULTIPLICAÇÃO E DIVISÃO, CADERNO A PARTIR DO MÊS DE SETEMBRO.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <footer>
     COPYRIGHT © N74 – <span id="clock"></span>
 </footer>
 
 <script>
 const table = document.getElementById('horarioTable');
+const tabelaHorario = document.getElementById('tabelaHorario');
+const provasDiv = document.getElementById('provas');
 const buttons = document.querySelectorAll('#controls button');
 const btnFull = document.getElementById('btnFull');
 const btnDay = document.getElementById('btnDay');
+const btnProvas = document.getElementById('btnProvas');
 
 function setActive(button) {
     buttons.forEach(b => b.classList.remove('active'));
@@ -225,8 +297,9 @@ function setActive(button) {
 
 function showFullTable() {
     setActive(btnFull);
+    provasDiv.style.display = 'none';
+    tabelaHorario.style.display = 'block';
     table.classList.remove('compacto');
-    table.style.tableLayout = 'fixed';
     const ths = table.querySelectorAll('thead th');
     const trs = table.querySelectorAll('tbody tr');
     ths.forEach(th => { th.style.display = ''; th.style.width = ''; });
@@ -235,46 +308,40 @@ function showFullTable() {
 
 function showCurrentDay() {
     setActive(btnDay);
+    provasDiv.style.display = 'none';
+    tabelaHorario.style.display = 'block';
     table.classList.add('compacto');
-    table.style.tableLayout = 'auto';
-    const ths = table.querySelectorAll('thead th');
-    const trs = table.querySelectorAll('tbody tr');
     const hoje = new Date().getDay();
     let colIndex = (hoje >= 1 && hoje <= 5) ? hoje : 1;
-    const btnWidth = buttons[0].offsetWidth + "px";
-    ths.forEach((th, index) => {
-        if (index === 0 || index === colIndex) {
-            th.style.display = '';
-            th.style.width = btnWidth;
-        } else th.style.display = 'none';
+    const colWidth = "140px";
+    const ths = table.querySelectorAll('thead th');
+    const trs = table.querySelectorAll('tbody tr');
+    ths.forEach((th, i) => {
+        if (i === 0 || i === colIndex) { th.style.display = ''; th.style.width = colWidth; }
+        else th.style.display = 'none';
     });
-    trs.forEach(tr => {
-        tr.querySelectorAll('td').forEach((td, index) => {
-            if (index === 0 || index === colIndex) {
-                td.style.display = '';
-                td.style.width = btnWidth;
-            } else td.style.display = 'none';
-        });
-    });
+    trs.forEach(tr => tr.querySelectorAll('td').forEach((td, i) => {
+        if (i === 0 || i === colIndex) { td.style.display = ''; td.style.width = colWidth; }
+        else td.style.display = 'none';
+    }));
 }
 
-// Exibir o dia atual ao carregar
-showCurrentDay();
+function showProvas() {
+    setActive(btnProvas);
+    tabelaHorario.style.display = 'none';
+    provasDiv.style.display = 'block';
+}
 
-// Relógio em tempo real de Brasília
+// Relógio de Brasília
 function updateClock() {
     const now = new Date();
-    const options = {
-        timeZone: "America/Sao_Paulo",
-        hour: "2-digit", minute: "2-digit", second: "2-digit",
-        day: "2-digit", month: "2-digit", year: "numeric"
-    };
+    const options = { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit", second: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" };
     document.getElementById("clock").textContent = now.toLocaleString("pt-BR", options);
 }
 setInterval(updateClock, 1000);
 updateClock();
 
-// Bloqueio leve para curiosos
+// Bloqueio leve
 document.addEventListener('keydown', e => {
     if ((e.ctrlKey && (e.key === 'u' || e.key === 'U')) || e.key === 'F12') {
         e.preventDefault(); alert('NÃO VAI PERDER A HORA');
@@ -287,4 +354,3 @@ document.addEventListener('contextmenu', e => {
 
 </body>
 </html>
-
