@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HORÁRIO ESCOLAR 2026 – 3º B – PROFª MAYARA</title>
+
+<style>
+
+/* ======================
+   FUNDO CADERNO FIXO
+====================== */
+body{
+    margin:0;
+    padding:15px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background-color:#fdfdfd;
+    background-image:
+        linear-gradient(to right, rgba(0,0,255,0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,0,0,0.10) 1px, transparent 1px);
+    background-size:28px 28px;
+    background-attachment:fixed;
+    -webkit-user-select:none;
+    user-select:none;
+}
+
+/* ======================
+   TÍTULO
+====================== */
+h1{
+    text-align:center;
+    margin:10px 0 20px 0;
+    font-size:clamp(18px,4vw,26px);
+    text-transform:uppercase;
+}
+
+/* ======================
+   TABELA
+====================== */
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    border-collapse:separate;
+    border-spacing:0;
+    width:100%;
+    table-layout:fixed;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    font-size:clamp(12px,3vw,15px);
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+    border:2px solid white;
+    text-transform:uppercase;
+    color:#000;
+    word-break:break-word;
+}
+
+/* Cabeçalho */
+th{
+    background:#F6F74A;
+    font-weight:bold;
+}
+
+/* Coluna horário */
+td:first-child{
+    background:#F6F74A;
+    font-weight:bold;
+}
+
+/* Cores disciplinas */
+.ingles{background:#FBC4C3;}
+.artes{background:#E84444;}
+.lanche{background:#E4A414;}
+.edfisica{background:#68FA5B;}
+.historia{background:#69AFD1;}
+.portugues{background:#FB48F9;}
+.matematica{background:#4DF3D5;}
+.robotica{background:#EFAA5C;}
+.geografia{background:#93A2F4;}
+.ciencias{background:#F1EE50;}
+.projeto{background:#0DFF01;}
+
+/* ======================
+   DATA ABAIXO DO DIA
+====================== */
+th small{
+    display:block;
+    font-size:70%;
+    margin-top:4px;
+    font-weight:normal;
+}
+
+/* ======================
+   BOTÃO IOS GLASS
+====================== */
+.controls{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+}
+
+.toggle{
+    display:flex;
+    background:rgba(255,255,255,.6);
+    backdrop-filter:blur(15px);
+    border-radius:50px;
+    padding:5px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    width:clamp(220px,80%,380px);
+}
+
+.toggle button{
+    flex:1;
+    border:none;
+    background:none;
+    padding:10px;
+    font-weight:600;
+    border-radius:40px;
+    cursor:pointer;
+    transition:.3s;
+    text-transform:uppercase;
+}
+
+.toggle button.active{
+    background:white;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+/* ======================
+   MODO DIÁRIO
+====================== */
+.compacto{
+    table-layout:auto !important;
+    width:auto !important;
+    margin:auto;
+}
+
+/* ======================
+   RESPONSIVO EXTRA
+====================== */
+@media(max-width:600px){
+    body{padding:10px;}
+    th,td{padding:8px;font-size:12px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 id="titulo">HORÁRIO ESCOLAR 2026 – 3º B – PROFª MAYARA</h1>
+
+<div class="table-container">
+<table id="tabela">
+<thead>
+<tr>
+<th>HORÁRIO</th>
+<th>SEG<small></small></th>
+<th>TER<small></small></th>
+<th>QUA<small></small></th>
+<th>QUI<small></small></th>
+<th>SEX<small></small></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13:20–14:00</td>
+<td class="ingles">INGLÊS</td>
+<td class="ingles">INGLÊS</td>
+<td class="ingles">INGLÊS</td>
+<td class="ingles">INGLÊS</td>
+<td class="ingles">INGLÊS</td>
+</tr>
+<tr>
+<td>14:00–14:40</td>
+<td class="artes">ARTES</td>
+<td class="portugues">PORTUGUÊS</td>
+<td class="portugues">PORTUGUÊS</td>
+<td class="portugues">PORTUGUÊS</td>
+<td class="ciencias">CIÊNCIAS</td>
+</tr>
+<tr>
+<td>14:40–15:00</td>
+<td class="lanche">LANCHE</td>
+<td class="lanche">LANCHE</td>
+<td class="lanche">LANCHE</td>
+<td class="lanche">LANCHE</td>
+<td class="lanche">LANCHE</td>
+</tr>
+<tr>
+<td>15:00–15:50</td>
+<td class="edfisica">ED FÍSICA</td>
+<td class="portugues">PORTUGUÊS</td>
+<td class="geografia">GEOGRAFIA</td>
+<td class="portugues">PORTUGUÊS</td>
+<td class="ciencias">CIÊNCIAS</td>
+</tr>
+<tr>
+<td>15:50–16:30</td>
+<td class="historia">HISTÓRIA</td>
+<td class="matematica">MATEMÁTICA</td>
+<td class="geografia">GEOGRAFIA</td>
+<td class="matematica">MATEMÁTICA</td>
+<td class="matematica">MATEMÁTICA</td>
+</tr>
+<tr>
+<td>16:30–17:10</td>
+<td class="historia">HISTÓRIA</td>
+<td class="robotica">ROBÓTICA</td>
+<td class="projeto">PROJETO</td>
+<td class="matematica">MATEMÁTICA</td>
+<td class="matematica">MATEMÁTICA</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="controls">
+<div class="toggle" id="toggle">
+<button id="btnSemanal" class="active">SEMANAL</button>
+<button id="btnDiario">DIÁRIO</button>
+</div>
+</div>
+
+<script>
+
+/* ======================
+   DATA AUTOMÁTICA COMPLETA
+====================== */
+function atualizarDatas(){
+    const hoje=new Date();
+    const diaSemana=hoje.getDay();
+    const diff=(diaSemana===0?1:diaSemana)-1;
+    const segunda=new Date(hoje);
+    segunda.setDate(hoje.getDate()-diff);
+
+    document.querySelectorAll("thead th small").forEach((el,i)=>{
+        if(i===0)return;
+        const d=new Date(segunda);
+        d.setDate(segunda.getDate()+i-1);
+        const dd=String(d.getDate()).padStart(2,"0");
+        const mm=String(d.getMonth()+1).padStart(2,"0");
+        const yyyy=d.getFullYear();
+        el.textContent=`${dd}/${mm}/${yyyy}`;
+    });
+}
+atualizarDatas();
+
+/* ======================
+   CONTROLE SEMANAL / DIÁRIO
+====================== */
+const tabela=document.getElementById("tabela");
+const btnSemanal=document.getElementById("btnSemanal");
+const btnDiario=document.getElementById("btnDiario");
+const titulo=document.getElementById("titulo");
+
+function modoSemanal(){
+    btnSemanal.classList.add("active");
+    btnDiario.classList.remove("active");
+    titulo.style.display="block";
+    tabela.classList.remove("compacto");
+    document.querySelectorAll("th,td").forEach(el=>el.style.display="");
+}
+
+function modoDiario(){
+    btnDiario.classList.add("active");
+    btnSemanal.classList.remove("active");
+    titulo.style.display="none";
+    tabela.classList.add("compacto");
+
+    const hoje=new Date().getDay();
+    const col=(hoje>=1&&hoje<=5)?hoje:1;
+
+    document.querySelectorAll("#tabela tr").forEach(tr=>{
+        tr.querySelectorAll("th,td").forEach((cell,i)=>{
+            cell.style.display=(i===0||i===col)?"":"none";
+        });
+    });
+}
+
+btnSemanal.onclick=modoSemanal;
+btnDiario.onclick=modoDiario;
+
+modoSemanal();
+
+/* ==========================
+   🔐 BLOQUEIO EXTREMO
+========================== */
+(function(){
+document.addEventListener("contextmenu",e=>{e.preventDefault();modoSemanal();location.reload();});
+document.addEventListener("copy",e=>e.preventDefault());
+document.addEventListener("selectstart",e=>e.preventDefault());
+document.addEventListener("keydown",e=>{
+if(e.key==="F12"||(e.ctrlKey&&e.shiftKey)|| (e.ctrlKey&&["U","S"].includes(e.key.toUpperCase()))){
+e.preventDefault();modoSemanal();location.reload();
+}});
+setInterval(()=>{
+if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160){
+document.body.innerHTML="";location.reload();
+}},1000);
+})();
+</script>
+
+</body>
+</html>
