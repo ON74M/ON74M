@@ -3,30 +3,38 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Suporte Técnico</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* ================= BASE ================= */
+/* ================= RESET ================= */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Ubuntu', sans-serif;
+font-weight:300;
 }
 
 html,body{
 width:100%;
-height:100%;
-overflow:hidden;
+min-height:100%;
 background:#000;
 color:#00ff41;
+
+overflow-x:hidden;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+
+padding-bottom:80px;
 }
 
 /* ================= MATRIX ================= */
@@ -37,6 +45,15 @@ inset:0;
 width:100%;
 height:100%;
 z-index:0;
+pointer-events:none;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
 }
 
 /* ================= CONTAINER ================= */
@@ -45,115 +62,137 @@ z-index:0;
 position:relative;
 z-index:2;
 width:100%;
-height:100vh;
+min-height:100dvh;
+
 display:flex;
 justify-content:center;
-align-items:center;
-padding:14px;
+align-items:flex-start;
+
+padding:12px;
 }
 
-/* ================= PAINEL ================= */
+/* ================= PANEL ================= */
 
 .panel{
-width:min(96vw, 1200px);
-height:min(94vh, 850px);
+width:100%;
+max-width:1100px;
 
-background:rgba(0,0,0,0.6);
-border:1px solid rgba(0,255,65,0.12);
-border-radius:20px;
-backdrop-filter:blur(6px);
+background:rgba(0,0,0,0.45);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:16px;
 
-padding:18px;
+padding:12px;
 
 display:flex;
 flex-direction:column;
-
-position:relative;
-}
-
-/* ================= NAV ================= */
-
-.nav{
-position:absolute;
-top:12px;
-left:12px;
-display:flex;
-gap:10px;
-z-index:10;
-}
-
-.nav a{
-text-decoration:none;
-color:#00ff41;
-font-size:12px;
-padding:6px 10px;
-border:1px solid rgba(0,255,65,0.3);
-border-radius:8px;
-background:rgba(0,0,0,0.4);
-transition:0.2s;
-}
-
-.nav a:hover{
-border-color:#00ff41;
-transform:translateY(-1px);
-}
-
-.home{
-color:#00ccff;
-border-color:rgba(0,204,255,0.3);
 }
 
 /* ================= HEADER ================= */
 
 .header{
 text-align:center;
-margin-top:30px;
+margin-top:6px;
 }
 
 .title{
 font-family:'Neuropol', sans-serif;
-font-size:clamp(28px, 4vw, 70px);
+font-size:clamp(24px, 5.5vw, 44px);
 color:#00ff41;
-text-shadow:0 0 15px #00ff41;
-animation:pulse 2.5s infinite;
+text-shadow:0 0 10px #00ff41;
 }
 
 .subtitle{
-font-size:14px;
+font-size:12px;
 color:#00cc33;
-margin-top:6px;
+margin-top:4px;
 }
 
 /* ================= CONTENT ================= */
 
 .content{
-flex:1;
-margin-top:20px;
-overflow:auto;
-padding-right:6px;
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:14px;
 }
 
-h2{
-font-size:18px;
-margin-bottom:10px;
-}
+/* ================= CARD ================= */
 
-p{
-font-size:13px;
-line-height:1.6;
+.card{
+background:rgba(0,0,0,0.88);
+border:1px solid rgba(0,255,65,0.18);
+border-radius:12px;
+
+padding:12px;
+
 color:#b7ffcf;
-margin-bottom:10px;
 }
 
-/* ================= ANIMATION ================= */
+.card h3{
+color:#00ff41;
+font-size:12px;
+font-weight:300;
+margin-bottom:6px;
+}
 
-@keyframes pulse{
-0%{opacity:0.75;}
-50%{opacity:1;}
-100%{opacity:0.75;}
+.card p{
+font-size:11px;
+line-height:1.5;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+
+display:flex;
+justify-content:space-around;
+align-items:center;
+
+background:rgba(0,0,0,0.88);
+backdrop-filter: blur(10px);
+
+border-top:1px solid rgba(0,255,65,0.2);
+
+padding:10px 0;
+
+z-index:9999;
+}
+
+.nav-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+
+text-decoration:none;
+color:#00ff41;
+
+font-size:10px;
+gap:4px;
+}
+
+.nav-item i{
+font-size:18px;
+}
+
+.nav-item:active{
+transform:scale(0.95);
+opacity:0.7;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:480px){
+.card p{
+font-size:10.5px;
+}
 }
 
 </style>
+
 </head>
 
 <body>
@@ -164,63 +203,104 @@ margin-bottom:10px;
 
 <div class="panel">
 
-<!-- NAV PADRÃO -->
-<div class="nav">
-
-<a href="javascript:history.back()">← VOLTAR</a>
-<a class="home" href="../index.html">⌂ HOME</a>
-
-</div>
-
-<!-- HEADER FIXO -->
+<!-- HEADER -->
 <div class="header">
-
 <div class="title">SUPORTE TÉCNICO</div>
-<div class="subtitle">Atendimento profissional em TI</div>
-
+<div class="subtitle">N74 TEC | Soluções em TI</div>
 </div>
 
-<!-- CONTEÚDO -->
+<!-- CONTENT -->
 <div class="content">
 
-<h2>O que é o Suporte Técnico?</h2>
-
+<div class="card">
+<h3>O que é o Suporte Técnico?</h3>
 <p>
-O suporte técnico da N74 TEC é responsável por resolver problemas em computadores, notebooks, sistemas operacionais e softwares em geral.
+Serviço completo para manutenção de computadores, notebooks e sistemas.
+Corrigimos lentidão, erros, travamentos e falhas gerais do sistema.
 </p>
+</div>
 
-<h2>Como funciona o atendimento</h2>
-
+<div class="card">
+<h3>Instalação de Impressoras e Periféricos</h3>
 <p>
-O atendimento pode ser realizado de forma remota ou presencial, dependendo da necessidade do cliente e da complexidade do problema.
+Instalação e configuração de impressoras, scanners e dispositivos em rede ou USB,
+incluindo drivers e integração com o sistema.
 </p>
+</div>
 
-<h2>Serviços incluídos</h2>
-
+<div class="card">
+<h3>Instalação de Softwares</h3>
 <p>
-✔ Remoção de vírus<br>
-✔ Otimização de sistema<br>
-✔ Instalação de programas<br>
-✔ Correção de erros<br>
-✔ Configuração de dispositivos<br>
+Instalação de programas essenciais como sistemas corporativos, pacotes Office
+e softwares específicos conforme a necessidade do cliente.
 </p>
+</div>
 
-<h2>Suporte remoto</h2>
-
+<div class="card">
+<h3>Hardware e Manutenção</h3>
 <p>
-Resolvemos muitos problemas sem precisar de visita técnica, através de acesso remoto seguro.
+Diagnóstico e manutenção de equipamentos físicos, troca de peças, upgrades,
+limpeza interna e correção de falhas.
 </p>
+</div>
 
-<h2>Suporte presencial</h2>
-
+<div class="card">
+<h3>Redes e Configurações Básicas</h3>
 <p>
-Quando necessário, realizamos atendimento no local para garantir solução completa do problema.
+Configuração de rede local, compartilhamento de arquivos, ajustes de internet,
+DNS e conectividade entre dispositivos.
 </p>
+</div>
+
+<div class="card">
+<h3>Segurança e Proteção</h3>
+<p>
+Remoção de vírus, instalação de antivírus e otimização do sistema para garantir
+mais segurança e estabilidade.
+</p>
+</div>
+
+<div class="card">
+<h3>Como funciona o atendimento?</h3>
+<p>
+Atendimento remoto ou presencial, com análise rápida do problema e solução direta,
+sem burocracia.
+</p>
+</div>
+
+<div class="card">
+<h3>Para quem é este serviço?</h3>
+<p>
+Indicado para empresas, escritórios e usuários domésticos que precisam de suporte
+técnico confiável e rápido.
+</p>
+</div>
+
+</div>
 
 </div>
 
 </div>
-</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+<a class="nav-item" href="../index.html">
+<i class="fa-solid fa-house"></i>
+<span>Home</span>
+</a>
+
+<a class="nav-item" href="../index.html#services">
+<i class="fa-solid fa-grid-2"></i>
+<span>Serviços</span>
+</a>
+
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+<span>Contato</span>
+</a>
+
+</nav>
 
 <script>
 
@@ -230,14 +310,13 @@ const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 
 function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 }
-
 resize();
 
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const fontSize=16;
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+const fontSize=15;
 
 let columns=canvas.width/fontSize;
 let drops=[];
@@ -246,34 +325,29 @@ function init(){
 columns=canvas.width/fontSize;
 drops=Array.from({length:columns},()=>1);
 }
-
 init();
 
 function draw(){
 
-ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillStyle="rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ctx.fillStyle="#00ff41";
 ctx.font=fontSize+"px monospace";
 
 for(let i=0;i<drops.length;i++){
-
 let text=chars[Math.floor(Math.random()*chars.length)];
-
 ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+if(drops[i]*fontSize>canvas.height && Math.random()>0.97){
 drops[i]=0;
 }
-
-drops[i]+=0.7;
-
+drops[i]+=0.75;
 }
 
 }
 
-setInterval(draw,50);
+setInterval(draw,45);
 
 window.addEventListener("resize",()=>{
 resize();
