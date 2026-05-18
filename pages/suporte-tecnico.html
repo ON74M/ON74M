@@ -1,41 +1,3 @@
-<!--
-========================================================
-N74 TEC | MATRIX WEBSITE
-VERSÃO: V7.0 SUPORTE TÉCNICO PAGE
-ARQUIVO: pages/suporte-tecnico.html
-DATA: 18/05/2026
-STATUS: PRIMEIRA PÁGINA INTERNA
-
-ALTERAÇÕES DESTA VERSÃO:
-- Primeira página interna criada
-- Layout Matrix premium
-- Estrutura GitHub Pages
-- Botão voltar para index
-- WhatsApp direto
-- Layout totalmente responsivo
-- Painel adaptável
-- Visual cyberpunk refinado
-- Seções organizadas
-- Preparado para expansão futura
-
-RECURSOS:
-- Fundo Matrix animado
-- Botão voltar
-- Cards de atendimento
-- Destaque suporte remoto
-- CTA WhatsApp
-- Compatível com celular
-- Compatível com notebook
-
-PRÓXIMAS IDEIAS:
-- Modal de atendimento
-- Sistema SPA
-- Chat online
-- Terminal fake hacker
-- Som Matrix
-========================================================
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,358 +7,150 @@ PRÓXIMAS IDEIAS:
 
 <title>N74 TEC | Suporte Técnico</title>
 
-<!-- FONTE -->
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
-
-<!-- ÍCONES -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
+/* ================= BASE ================= */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Ubuntu', sans-serif;
 }
 
 html,body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    background:#000;
-
-    color:#00ff41;
-
-    font-family:Consolas, monospace;
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+color:#00ff41;
 }
 
-/* MATRIX */
+/* ================= MATRIX ================= */
 
 canvas{
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    z-index:0;
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container{
-
-    position:relative;
-
-    z-index:2;
-
-    width:100%;
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:12px;
+position:relative;
+z-index:2;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:14px;
 }
 
-/* PAINEL */
+/* ================= PAINEL ================= */
 
 .panel{
+width:min(96vw, 1200px);
+height:min(94vh, 850px);
 
-    width:min(96vw, 1100px);
+background:rgba(0,0,0,0.6);
+border:1px solid rgba(0,255,65,0.12);
+border-radius:20px;
+backdrop-filter:blur(6px);
 
-    height:min(95vh, 920px);
+padding:18px;
 
-    background:rgba(0,0,0,0.58);
+display:flex;
+flex-direction:column;
 
-    border:1px solid rgba(0,255,65,0.12);
-
-    border-radius:22px;
-
-    backdrop-filter:blur(5px);
-
-    padding:
-    clamp(14px, 1.5vw, 28px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 10px rgba(0,255,65,0.12),
-    0 0 30px rgba(0,255,65,0.05);
+position:relative;
 }
 
-/* TOPO */
+/* ================= NAV ================= */
 
-.top{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-    flex-wrap:wrap;
+.nav{
+position:absolute;
+top:12px;
+left:12px;
+display:flex;
+gap:10px;
+z-index:10;
 }
 
-/* BOTÃO VOLTAR */
-
-.back{
-
-    text-decoration:none;
-
-    color:#00ff41;
-
-    border:1px solid rgba(0,255,65,0.2);
-
-    padding:10px 16px;
-
-    border-radius:12px;
-
-    transition:0.3s;
-
-    font-size:13px;
+.nav a{
+text-decoration:none;
+color:#00ff41;
+font-size:12px;
+padding:6px 10px;
+border:1px solid rgba(0,255,65,0.3);
+border-radius:8px;
+background:rgba(0,0,0,0.4);
+transition:0.2s;
 }
 
-.back:hover{
-
-    background:rgba(0,255,65,0.08);
-
-    box-shadow:
-    0 0 10px rgba(0,255,65,0.15);
+.nav a:hover{
+border-color:#00ff41;
+transform:translateY(-1px);
 }
 
-/* TÍTULO */
+.home{
+color:#00ccff;
+border-color:rgba(0,204,255,0.3);
+}
+
+/* ================= HEADER ================= */
+
+.header{
+text-align:center;
+margin-top:30px;
+}
 
 .title{
-
-    width:100%;
-
-    text-align:center;
-
-    margin-top:8px;
-
-    font-family:'Neuropol', sans-serif;
-
-    font-size:
-    clamp(28px, 4vw, 70px);
-
-    color:#00ff41;
-
-    letter-spacing:4px;
-
-    text-shadow:
-    0 0 5px #00ff41,
-    0 0 15px #00ff41,
-    0 0 30px #00ff41;
-
-    animation:pulse 2.5s infinite;
+font-family:'Neuropol', sans-serif;
+font-size:clamp(28px, 4vw, 70px);
+color:#00ff41;
+text-shadow:0 0 15px #00ff41;
+animation:pulse 2.5s infinite;
 }
 
 .subtitle{
-
-    text-align:center;
-
-    margin-top:8px;
-
-    color:#00cc33;
-
-    font-size:
-    clamp(11px, 1vw, 17px);
-
-    letter-spacing:3px;
+font-size:14px;
+color:#00cc33;
+margin-top:6px;
 }
 
-/* LINHA */
-
-.line{
-
-    width:100%;
-
-    height:1px;
-
-    margin:18px 0;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        #00ff41,
-        transparent
-    );
-}
-
-/* CONTEÚDO */
+/* ================= CONTENT ================= */
 
 .content{
-
-    flex:1;
-
-    overflow:auto;
-
-    padding-right:4px;
+flex:1;
+margin-top:20px;
+overflow:auto;
+padding-right:6px;
 }
 
-/* GRID */
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
+h2{
+font-size:18px;
+margin-bottom:10px;
 }
 
-/* CARD */
-
-.card{
-
-    background:rgba(0,255,65,0.03);
-
-    border:1px solid rgba(0,255,65,0.08);
-
-    border-radius:18px;
-
-    padding:18px;
-
-    transition:0.3s;
+p{
+font-size:13px;
+line-height:1.6;
+color:#b7ffcf;
+margin-bottom:10px;
 }
 
-.card:hover{
-
-    transform:translateY(-3px);
-
-    border-color:#00ff41;
-
-    box-shadow:
-    0 0 12px rgba(0,255,65,0.12);
-}
-
-.card h3{
-
-    margin-bottom:12px;
-
-    font-size:
-    clamp(14px, 1vw, 18px);
-
-    color:#00ff41;
-}
-
-.card p{
-
-    line-height:1.6;
-
-    color:#9bffbc;
-
-    font-size:
-    clamp(11px, 0.85vw, 14px);
-}
-
-/* CTA */
-
-.cta{
-
-    margin-top:22px;
-
-    display:flex;
-
-    justify-content:center;
-}
-
-.whatsapp{
-
-    text-decoration:none;
-
-    background:#25D366;
-
-    color:#fff;
-
-    padding:14px 24px;
-
-    border-radius:14px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-weight:bold;
-
-    transition:0.3s;
-
-    box-shadow:
-    0 0 12px rgba(37,211,102,0.2);
-}
-
-.whatsapp:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 20px rgba(37,211,102,0.4);
-}
-
-/* FOOTER */
-
-.footer{
-
-    margin-top:16px;
-
-    text-align:center;
-
-    color:#00aa33;
-
-    font-size:
-    clamp(8px, 0.7vw, 12px);
-
-    letter-spacing:1px;
-}
-
-/* ANIMAÇÃO */
+/* ================= ANIMATION ================= */
 
 @keyframes pulse{
-
-    0%{
-        opacity:0.75;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0.75;
-    }
-}
-
-/* RESPONSIVO */
-
-@media(max-width:760px){
-
-    .grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .top{
-
-        justify-content:center;
-    }
+0%{opacity:0.75;}
+50%{opacity:1;}
+100%{opacity:0.75;}
 }
 
 </style>
@@ -408,202 +162,122 @@ canvas{
 
 <div class="container">
 
-    <div class="panel">
+<div class="panel">
 
-        <!-- TOPO -->
+<!-- NAV PADRÃO -->
+<div class="nav">
 
-        <div class="top">
+<a href="javascript:history.back()">← VOLTAR</a>
+<a class="home" href="../index.html">⌂ HOME</a>
 
-            <a
-                class="back"
-                href="../index.html"
-            >
-                ← VOLTAR
-            </a>
+</div>
 
-        </div>
+<!-- HEADER FIXO -->
+<div class="header">
 
-        <!-- TÍTULO -->
+<div class="title">SUPORTE TÉCNICO</div>
+<div class="subtitle">Atendimento profissional em TI</div>
 
-        <div class="title">
-            SUPORTE TÉCNICO
-        </div>
+</div>
 
-        <div class="subtitle">
-            N74 TEC | SOLUÇÕES EM TI
-        </div>
+<!-- CONTEÚDO -->
+<div class="content">
 
-        <div class="line"></div>
+<h2>O que é o Suporte Técnico?</h2>
 
-        <!-- CONTEÚDO -->
+<p>
+O suporte técnico da N74 TEC é responsável por resolver problemas em computadores, notebooks, sistemas operacionais e softwares em geral.
+</p>
 
-        <div class="content">
+<h2>Como funciona o atendimento</h2>
 
-            <div class="grid">
+<p>
+O atendimento pode ser realizado de forma remota ou presencial, dependendo da necessidade do cliente e da complexidade do problema.
+</p>
 
-                <div class="card">
+<h2>Serviços incluídos</h2>
 
-                    <h3>ATENDIMENTO RESIDENCIAL</h3>
+<p>
+✔ Remoção de vírus<br>
+✔ Otimização de sistema<br>
+✔ Instalação de programas<br>
+✔ Correção de erros<br>
+✔ Configuração de dispositivos<br>
+</p>
 
-                    <p>
-                        Suporte técnico completo para
-                        computadores, notebooks,
-                        impressoras, redes Wi-Fi,
-                        lentidão, travamentos e
-                        problemas em geral.
-                    </p>
+<h2>Suporte remoto</h2>
 
-                </div>
+<p>
+Resolvemos muitos problemas sem precisar de visita técnica, através de acesso remoto seguro.
+</p>
 
-                <div class="card">
+<h2>Suporte presencial</h2>
 
-                    <h3>ATENDIMENTO EMPRESARIAL</h3>
+<p>
+Quando necessário, realizamos atendimento no local para garantir solução completa do problema.
+</p>
 
-                    <p>
-                        Suporte para pequenas empresas,
-                        manutenção preventiva,
-                        infraestrutura de rede,
-                        organização de equipamentos
-                        e suporte corporativo.
-                    </p>
+</div>
 
-                </div>
-
-                <div class="card">
-
-                    <h3>SUPORTE REMOTO</h3>
-
-                    <p>
-                        Atendimento remoto rápido
-                        e seguro para resolução
-                        imediata de problemas
-                        sem necessidade de visita.
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>FORMATAÇÃO & OTIMIZAÇÃO</h3>
-
-                    <p>
-                        Formatação profissional,
-                        instalação de drivers,
-                        backup, limpeza,
-                        otimização e atualização
-                        do sistema.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <!-- CTA -->
-
-            <div class="cta">
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/5511958733142"
-                    target="_blank"
-                >
-                    <i class="fa-brands fa-whatsapp"></i>
-
-                    CHAMAR NO WHATSAPP
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="line"></div>
-
-        <!-- FOOTER -->
-
-        <div class="footer">
-            N74 TEC © 2026 • SUPORTE TÉCNICO
-        </div>
-
-    </div>
-
+</div>
 </div>
 
 <script>
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+/* MATRIX */
 
-function resizeCanvas(){
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 }
 
-resizeCanvas();
+resize();
 
-const letters =
-"アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize=16;
 
-const chars = letters.split("");
+let columns=canvas.width/fontSize;
+let drops=[];
 
-const fontSize = 16;
-
-let columns = canvas.width / fontSize;
-
-let drops = [];
-
-function setupDrops(){
-
-    columns = canvas.width / fontSize;
-
-    drops = [];
-
-    for(let i = 0; i < columns; i++){
-
-        drops[i] = 1;
-    }
+function init(){
+columns=canvas.width/fontSize;
+drops=Array.from({length:columns},()=>1);
 }
 
-setupDrops();
+init();
 
 function draw(){
 
-    ctx.fillStyle = "rgba(0,0,0,0.06)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    ctx.fillStyle = "#00ff41";
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
 
-    ctx.font = fontSize + "px monospace";
+for(let i=0;i<drops.length;i++){
 
-    for(let i = 0; i < drops.length; i++){
+let text=chars[Math.floor(Math.random()*chars.length)];
 
-        const text =
-        chars[Math.floor(Math.random() * chars.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-        ctx.fillText(
-            text,
-            i * fontSize,
-            drops[i] * fontSize
-        );
-
-        if(
-            drops[i] * fontSize > canvas.height &&
-            Math.random() > 0.985
-        ){
-            drops[i] = 0;
-        }
-
-        drops[i] += 0.6;
-    }
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
 }
 
-setInterval(draw, 60);
+drops[i]+=0.7;
 
-window.addEventListener("resize", () => {
+}
 
-    resizeCanvas();
-    setupDrops();
+}
 
+setInterval(draw,50);
+
+window.addEventListener("resize",()=>{
+resize();
+init();
 });
 
 </script>
