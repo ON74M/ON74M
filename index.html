@@ -10,9 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
 <style>
 
 /* ================= RESET ================= */
@@ -22,6 +19,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Ubuntu', sans-serif;
+font-weight:300;
 }
 
 html,body{
@@ -42,6 +40,15 @@ height:100%;
 z-index:0;
 }
 
+/* 🔒 CAMADA DE LEITURA (ESSENCIAL) */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.82);
+z-index:1;
+}
+
 /* ================= CONTAINER ================= */
 
 .container{
@@ -52,21 +59,20 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:14px;
+padding:12px;
 }
 
-/* ================= PANEL ================= */
+/* ================= PAINEL ================= */
 
 .panel{
-width:min(96vw, 1250px);
-height:min(94vh, 900px);
+width:min(100%, 1200px);
+height:min(100vh, 900px);
 
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.55);
 border:1px solid rgba(0,255,65,0.12);
-border-radius:20px;
-backdrop-filter:blur(6px);
+border-radius:18px;
 
-padding:18px;
+padding:14px;
 
 display:flex;
 flex-direction:column;
@@ -76,21 +82,23 @@ flex-direction:column;
 
 .header{
 text-align:center;
-margin-top:10px;
+margin-top:8px;
 }
 
 .title{
 font-family:'Neuropol', sans-serif;
-font-size:clamp(28px, 4vw, 72px);
+font-size:clamp(28px, 5vw, 64px);
 color:#00ff41;
-text-shadow:0 0 15px #00ff41;
-animation:pulse 2.5s infinite;
+text-shadow:0 0 12px #00ff41;
+animation:pulse 2.8s infinite;
+font-weight:300;
 }
 
 .subtitle{
-font-size:14px;
+font-size:13px;
 color:#00cc33;
-margin-top:6px;
+margin-top:4px;
+font-weight:300;
 }
 
 /* ================= GRID ================= */
@@ -99,33 +107,40 @@ margin-top:6px;
 flex:1;
 display:grid;
 grid-template-columns:repeat(4, 1fr);
-gap:12px;
-margin-top:20px;
+gap:10px;
+margin-top:14px;
 }
 
 /* ================= CARD ================= */
 
 .card{
-background:rgba(0,255,65,0.03);
-border:1px solid rgba(0,255,65,0.12);
-border-radius:14px;
-padding:14px;
+background:rgba(0,0,0,0.88);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:12px;
+
+padding:12px;
+min-height:120px;
+
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-height:140px;
+
 text-decoration:none;
 color:#00ff41;
-transition:0.2s;
+
+transition:0.2s ease;
+
+font-weight:300;
 }
 
 .card:hover{
-transform:translateY(-3px);
+transform:translateY(-2px);
 border-color:#00ff41;
 }
 
 .card h3{
-font-size:14px;
+font-size:13px;
+font-weight:300;
 margin-bottom:6px;
 }
 
@@ -133,59 +148,52 @@ margin-bottom:6px;
 font-size:11px;
 color:#b7ffcf;
 line-height:1.4;
+font-weight:300;
 }
 
 .more{
 font-size:10px;
-margin-top:auto;
 color:#00ff41;
-}
-
-/* ================= SOCIAL ICONS ================= */
-
-.social{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-top:12px;
-}
-
-.social a{
-width:34px;
-height:34px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:8px;
-font-size:18px;
-color:#fff;
-text-decoration:none;
-transition:0.2s;
-}
-
-.social a:hover{
-transform:translateY(-2px);
-opacity:0.85;
-}
-
-.instagram{
-background:linear-gradient(45deg,#405DE6,#833AB4,#E1306C,#FD1D1D,#F56040);
-}
-
-.whatsapp{
-background:#25D366;
+opacity:0.9;
 }
 
 /* ================= FOOTER ================= */
 
 .footer{
-text-align:center;
 margin-top:10px;
-font-size:11px;
+text-align:center;
+font-size:10px;
 color:#00aa33;
+
 display:flex;
 flex-direction:column;
-gap:8px;
+gap:6px;
+font-weight:300;
+}
+
+.social{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.social a{
+text-decoration:none;
+font-size:11px;
+padding:6px 10px;
+border-radius:6px;
+font-weight:300;
+}
+
+.instagram{
+background:linear-gradient(45deg,#405DE6,#833AB4,#E1306C);
+color:white;
+}
+
+.whatsapp{
+background:#25D366;
+color:black;
 }
 
 /* ================= ANIMATION ================= */
@@ -196,14 +204,15 @@ gap:8px;
 100%{opacity:0.75;}
 }
 
-/* ================= RESPONSIVO ================= */
+/* ================= RESPONSIVO REAL ================= */
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 .services{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:520px){
 .services{grid-template-columns:1fr;}
+.panel{padding:10px;}
 }
 
 </style>
@@ -226,87 +235,69 @@ gap:8px;
 
 </div>
 
-<!-- 8 CARDS -->
+<!-- SERVIÇOS (8 CARDS) -->
 <div class="services">
 
 <a class="card" href="pages/suporte-tecnico.html">
 <h3>SUPORTE TÉCNICO</h3>
-<p>Manutenção e correção de sistemas e computadores.</p>
+<p>Resolvemos problemas em computadores e sistemas de forma simples e rápida.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
 <a class="card" href="pages/redes-wifi.html">
 <h3>REDES & WI-FI</h3>
-<p>Configuração e otimização de redes empresariais.</p>
+<p>Configuração e melhoria da sua internet e rede local.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
-<a class="card" href="pages/cftv-seguranca.html">
+<a class="card" href="pages/cftv.html">
 <h3>CFTV</h3>
-<p>Monitoramento e segurança por câmeras.</p>
+<p>Câmeras e monitoramento para segurança do ambiente.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
 <a class="card" href="pages/servidores.html">
 <h3>SERVIDORES</h3>
-<p>Infraestrutura e gerenciamento de servidores.</p>
+<p>Organização e manutenção da estrutura de TI.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
-<a class="card" href="pages/formatacao-backup.html">
+<a class="card" href="pages/backup.html">
 <h3>BACKUP</h3>
-<p>Formatação, backup e proteção de dados.</p>
+<p>Proteção e recuperação de arquivos importantes.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
 <a class="card" href="pages/suporte-remoto.html">
 <h3>SUPORTE REMOTO</h3>
-<p>Atendimento remoto rápido e eficiente.</p>
+<p>Atendimento sem precisar sair de casa ou da empresa.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
-<a class="card" href="pages/atendimento-avulso.html">
-<h3>AVULSO</h3>
-<p>Atendimento sob demanda sem contrato.</p>
+<a class="card" href="pages/avulso.html">
+<h3>ATENDIMENTO AVULSO</h3>
+<p>Serviço pontual quando você precisa de ajuda rápida.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
-<a class="card" href="pages/contrato-manutencao.html">
-<h3>CONTRATO</h3>
-<p>Suporte mensal contínuo para empresas.</p>
+<a class="card" href="pages/contrato.html">
+<h3>CONTRATO MENSAL</h3>
+<p>Suporte contínuo com acompanhamento recorrente.</p>
 <span class="more">VER MAIS →</span>
 </a>
 
 </div>
 
-<!-- SOCIAL ICONS -->
-<div class="social">
-
-<a class="instagram"
-href="https://www.instagram.com/n74tec/"
-target="_blank"
-rel="noopener noreferrer"
-title="Instagram">
-
-<i class="fa-brands fa-instagram"></i>
-
-</a>
-
-<a class="whatsapp"
-href="https://wa.me/5511958733142"
-target="_blank"
-rel="noopener noreferrer"
-title="WhatsApp">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-<!-- FOOTER -->
+<!-- FOOTER (ÚNICO DA INDEX) -->
 <div class="footer">
-N74 TEC © 2026 • Soluções em TI
+
+<div class="social">
+<a class="instagram" href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a class="whatsapp" href="https://wa.me/5511958733142" target="_blank">WhatsApp</a>
+</div>
+
+<div>N74 TEC © 2026 • Soluções em TI</div>
+
 </div>
 
 </div>
@@ -327,7 +318,7 @@ canvas.height=window.innerHeight;
 resize();
 
 const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const fontSize=16;
+const fontSize=15;
 
 let columns=canvas.width/fontSize;
 let drops=[];
@@ -340,6 +331,7 @@ drops=Array.from({length:columns},()=>1);
 init();
 
 function draw(){
+
 ctx.fillStyle="rgba(0,0,0,0.05)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -353,8 +345,9 @@ ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
 drops[i]=0;
 }
-drops[i]+=0.7;
+drops[i]+=0.65;
 }
+
 }
 
 setInterval(draw,50);
