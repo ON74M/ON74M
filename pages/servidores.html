@@ -1,403 +1,198 @@
-<!--
-========================================================
-N74 TEC | MATRIX WEBSITE
-VERSÃO: V7.3 SERVIDORES PAGE
-ARQUIVO: pages/servidores.html
-DATA: 18/05/2026
-STATUS: PÁGINA INTERNA
-
-ALTERAÇÕES DESTA VERSÃO:
-- Página Servidores criada
-- Estrutura GitHub Pages
-- Layout Matrix premium
-- Painel responsivo
-- Botão voltar
-- Cards de infraestrutura
-- CTA WhatsApp
-- Compatível com celular
-- Compatível com notebook
-- Visual cyberpunk refinado
-
-SERVIÇOS ABORDADOS:
-- Servidores locais
-- Compartilhamento de arquivos
-- Organização de rede
-- Backup em rede
-- Estrutura empresarial
-- Monitoramento básico
-
-PRÓXIMAS IDEIAS:
-- Dashboard servidor online
-- Monitor fake CPU/RAM
-- Painel de rede animado
-- Logs Matrix em tempo real
-========================================================
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Servidores</title>
 
-<!-- FONTE -->
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
-<!-- ÍCONES -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
+/* ================= RESET ================= */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Ubuntu', sans-serif;
+font-weight:300;
 }
 
 html,body{
+width:100%;
+min-height:100%;
+background:#000;
+color:#00ff41;
 
-    width:100%;
-    height:100%;
+overflow-x:hidden;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
 
-    overflow:hidden;
-
-    background:#000;
-
-    color:#00ff41;
-
-    font-family:Consolas, monospace;
+padding-bottom:80px;
 }
 
-/* MATRIX */
+/* ================= MATRIX ================= */
 
 canvas{
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    z-index:0;
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
 }
 
-/* CONTAINER */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
+}
+
+/* ================= CONTAINER ================= */
 
 .container{
+position:relative;
+z-index:2;
+width:100%;
+min-height:100dvh;
 
-    position:relative;
+display:flex;
+justify-content:center;
+align-items:flex-start;
 
-    z-index:2;
-
-    width:100%;
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:12px;
+padding:12px;
 }
 
-/* PAINEL */
+/* ================= PANEL ================= */
 
 .panel{
+width:100%;
+max-width:1100px;
 
-    width:min(96vw, 1100px);
+background:rgba(0,0,0,0.45);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:16px;
 
-    height:min(95vh, 920px);
+padding:12px;
 
-    background:rgba(0,0,0,0.58);
-
-    border:1px solid rgba(0,255,65,0.12);
-
-    border-radius:22px;
-
-    backdrop-filter:blur(5px);
-
-    padding:
-    clamp(14px, 1.5vw, 28px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 10px rgba(0,255,65,0.12),
-    0 0 30px rgba(0,255,65,0.05);
+display:flex;
+flex-direction:column;
 }
 
-/* TOPO */
+/* ================= HEADER ================= */
 
-.top{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-    flex-wrap:wrap;
+.header{
+text-align:center;
+margin-top:6px;
 }
-
-/* BOTÃO VOLTAR */
-
-.back{
-
-    text-decoration:none;
-
-    color:#00ff41;
-
-    border:1px solid rgba(0,255,65,0.2);
-
-    padding:10px 16px;
-
-    border-radius:12px;
-
-    transition:0.3s;
-
-    font-size:13px;
-}
-
-.back:hover{
-
-    background:rgba(0,255,65,0.08);
-
-    box-shadow:
-    0 0 10px rgba(0,255,65,0.15);
-}
-
-/* TÍTULO */
 
 .title{
-
-    width:100%;
-
-    text-align:center;
-
-    margin-top:8px;
-
-    font-family:'Neuropol', sans-serif;
-
-    font-size:
-    clamp(28px, 4vw, 70px);
-
-    color:#00ff41;
-
-    letter-spacing:4px;
-
-    text-shadow:
-    0 0 5px #00ff41,
-    0 0 15px #00ff41,
-    0 0 30px #00ff41;
-
-    animation:pulse 2.5s infinite;
+font-family:'Neuropol', sans-serif;
+font-size:clamp(24px, 5.5vw, 44px);
+color:#00ff41;
+text-shadow:0 0 10px #00ff41;
 }
 
 .subtitle{
-
-    text-align:center;
-
-    margin-top:8px;
-
-    color:#00cc33;
-
-    font-size:
-    clamp(11px, 1vw, 17px);
-
-    letter-spacing:3px;
+font-size:12px;
+color:#00cc33;
+margin-top:4px;
 }
 
-/* LINHA */
-
-.line{
-
-    width:100%;
-
-    height:1px;
-
-    margin:18px 0;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        #00ff41,
-        transparent
-    );
-}
-
-/* CONTEÚDO */
+/* ================= CONTENT ================= */
 
 .content{
-
-    flex:1;
-
-    overflow:auto;
-
-    padding-right:4px;
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:14px;
 }
 
-/* GRID */
-
-.grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-}
-
-/* CARD */
+/* ================= CARD ================= */
 
 .card{
+background:rgba(0,0,0,0.88);
+border:1px solid rgba(0,255,65,0.18);
+border-radius:12px;
 
-    background:rgba(0,255,65,0.03);
+padding:12px;
 
-    border:1px solid rgba(0,255,65,0.08);
-
-    border-radius:18px;
-
-    padding:18px;
-
-    transition:0.3s;
-}
-
-.card:hover{
-
-    transform:translateY(-3px);
-
-    border-color:#00ff41;
-
-    box-shadow:
-    0 0 12px rgba(0,255,65,0.12);
+color:#b7ffcf;
 }
 
 .card h3{
-
-    margin-bottom:12px;
-
-    font-size:
-    clamp(14px, 1vw, 18px);
-
-    color:#00ff41;
+color:#00ff41;
+font-size:12px;
+font-weight:300;
+margin-bottom:6px;
 }
 
 .card p{
-
-    line-height:1.6;
-
-    color:#9bffbc;
-
-    font-size:
-    clamp(11px, 0.85vw, 14px);
+font-size:11px;
+line-height:1.5;
 }
 
-/* CTA */
+/* ================= BOTTOM NAV ================= */
 
-.cta{
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
 
-    margin-top:22px;
+display:flex;
+justify-content:space-around;
+align-items:center;
 
-    display:flex;
+background:rgba(0,0,0,0.88);
+backdrop-filter: blur(10px);
 
-    justify-content:center;
+border-top:1px solid rgba(0,255,65,0.2);
+
+padding:10px 0;
+
+z-index:9999;
 }
 
-.whatsapp{
+.nav-item{
+display:flex;
+flex-direction:column;
+align-items:center;
 
-    text-decoration:none;
+text-decoration:none;
+color:#00ff41;
 
-    background:#25D366;
-
-    color:#fff;
-
-    padding:14px 24px;
-
-    border-radius:14px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-weight:bold;
-
-    transition:0.3s;
-
-    box-shadow:
-    0 0 12px rgba(37,211,102,0.2);
+font-size:10px;
+gap:4px;
 }
 
-.whatsapp:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 20px rgba(37,211,102,0.4);
+.nav-item i{
+font-size:18px;
 }
 
-/* FOOTER */
-
-.footer{
-
-    margin-top:16px;
-
-    text-align:center;
-
-    color:#00aa33;
-
-    font-size:
-    clamp(8px, 0.7vw, 12px);
-
-    letter-spacing:1px;
+.nav-item:active{
+transform:scale(0.95);
+opacity:0.7;
 }
 
-/* ANIMAÇÃO */
+/* ================= RESPONSIVO ================= */
 
-@keyframes pulse{
-
-    0%{
-        opacity:0.75;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0.75;
-    }
+@media(max-width:480px){
+.card p{
+font-size:10.5px;
 }
-
-/* RESPONSIVO */
-
-@media(max-width:760px){
-
-    .grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .top{
-
-        justify-content:center;
-    }
 }
 
 </style>
+
 </head>
 
 <body>
@@ -406,199 +201,151 @@ canvas{
 
 <div class="container">
 
-    <div class="panel">
+<div class="panel">
 
-        <!-- TOPO -->
+<!-- HEADER -->
+<div class="header">
+<div class="title">SERVIDORES</div>
+<div class="subtitle">N74 TEC | Soluções em TI</div>
+</div>
 
-        <div class="top">
+<!-- CONTENT -->
+<div class="content">
 
-            <a
-                class="back"
-                href="../index.html"
-            >
-                ← VOLTAR
-            </a>
+<div class="card">
+<h3>O que são Servidores?</h3>
+<p>
+Servidores são computadores ou sistemas responsáveis por armazenar, gerenciar e distribuir dados,
+arquivos e serviços dentro de uma empresa ou rede.
+</p>
+</div>
 
-        </div>
+<div class="card">
+<h3>Configuração de Servidores</h3>
+<p>
+Instalação e configuração de servidores para empresas, incluindo estrutura básica de rede,
+acesso de usuários e organização de serviços.
+</p>
+</div>
 
-        <!-- TÍTULO -->
+<div class="card">
+<h3>Compartilhamento de Arquivos</h3>
+<p>
+Criação de ambientes compartilhados para equipes acessarem arquivos de forma segura e organizada.
+</p>
+</div>
 
-        <div class="title">
-            SERVIDORES
-        </div>
+<div class="card">
+<h3>Backup e Segurança</h3>
+<p>
+Implementação de rotinas de backup para proteger dados importantes contra perdas e falhas.
+</p>
+</div>
 
-        <div class="subtitle">
-            N74 TEC | SOLUÇÕES EM TI
-        </div>
+<div class="card">
+<h3>Controle de Usuários</h3>
+<p>
+Gerenciamento de acessos, permissões e níveis de usuários dentro da rede ou servidor.
+</p>
+</div>
 
-        <div class="line"></div>
+<div class="card">
+<h3>Servidores em Rede Local</h3>
+<p>
+Estruturação de servidores internos para empresas com múltiplos computadores conectados.
+</p>
+</div>
 
-        <!-- CONTEÚDO -->
+<div class="card">
+<h3>Manutenção de Servidores</h3>
+<p>
+Monitoramento, ajustes e correção de falhas para garantir funcionamento contínuo do sistema.
+</p>
+</div>
 
-        <div class="content">
-
-            <div class="grid">
-
-                <div class="card">
-
-                    <h3>SERVIDORES LOCAIS</h3>
-
-                    <p>
-                        Estruturação de servidores
-                        locais para armazenamento,
-                        compartilhamento de arquivos
-                        e organização interna.
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>COMPARTILHAMENTO EM REDE</h3>
-
-                    <p>
-                        Configuração de pastas,
-                        permissões de acesso
-                        e integração entre
-                        computadores da empresa.
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>BACKUP EM REDE</h3>
-
-                    <p>
-                        Implementação de rotinas
-                        de backup local para maior
-                        segurança dos dados
-                        empresariais.
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>MONITORAMENTO & ORGANIZAÇÃO</h3>
-
-                    <p>
-                        Organização da estrutura
-                        de TI, equipamentos,
-                        rede interna e suporte
-                        técnico preventivo.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <!-- CTA -->
-
-            <div class="cta">
-
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/5511958733142"
-                    target="_blank"
-                >
-                    <i class="fa-brands fa-whatsapp"></i>
-
-                    CHAMAR NO WHATSAPP
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="line"></div>
-
-        <!-- FOOTER -->
-
-        <div class="footer">
-            N74 TEC © 2026 • SERVIDORES
-        </div>
-
-    </div>
+<div class="card">
+<h3>Para quem é este serviço?</h3>
+<p>
+Indicado para empresas que precisam organizar dados, sistemas e acessos de forma centralizada e segura.
+</p>
+</div>
 
 </div>
 
+</div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+<a class="nav-item" href="../index.html">
+<i class="fa-solid fa-house"></i>
+<span>Home</span>
+</a>
+
+<a class="nav-item" href="../index.html#services">
+<i class="fa-solid fa-grid-2"></i>
+<span>Serviços</span>
+</a>
+
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+<span>Contato</span>
+</a>
+
+</nav>
+
 <script>
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+/* MATRIX */
 
-function resizeCanvas(){
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 }
+resize();
 
-resizeCanvas();
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+const fontSize=15;
 
-const letters =
-"アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let columns=canvas.width/fontSize;
+let drops=[];
 
-const chars = letters.split("");
-
-const fontSize = 16;
-
-let columns = canvas.width / fontSize;
-
-let drops = [];
-
-function setupDrops(){
-
-    columns = canvas.width / fontSize;
-
-    drops = [];
-
-    for(let i = 0; i < columns; i++){
-
-        drops[i] = 1;
-    }
+function init(){
+columns=canvas.width/fontSize;
+drops=Array.from({length:columns},()=>1);
 }
-
-setupDrops();
+init();
 
 function draw(){
 
-    ctx.fillStyle = "rgba(0,0,0,0.06)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(0,0,0,0.04)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    ctx.fillStyle = "#00ff41";
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
 
-    ctx.font = fontSize + "px monospace";
+for(let i=0;i<drops.length;i++){
+let text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-    for(let i = 0; i < drops.length; i++){
-
-        const text =
-        chars[Math.floor(Math.random() * chars.length)];
-
-        ctx.fillText(
-            text,
-            i * fontSize,
-            drops[i] * fontSize
-        );
-
-        if(
-            drops[i] * fontSize > canvas.height &&
-            Math.random() > 0.985
-        ){
-            drops[i] = 0;
-        }
-
-        drops[i] += 0.6;
-    }
+if(drops[i]*fontSize>canvas.height && Math.random()>0.97){
+drops[i]=0;
+}
+drops[i]+=0.75;
 }
 
-setInterval(draw, 60);
+}
 
-window.addEventListener("resize", () => {
+setInterval(draw,45);
 
-    resizeCanvas();
-    setupDrops();
-
+window.addEventListener("resize",()=>{
+resize();
+init();
 });
 
 </script>
