@@ -1,475 +1,194 @@
-<!--
-========================================================
-N74 TEC | MATRIX WEBSITE
-VERSÃO: V7.4 NATURAL LAYOUT EDITION
-DATA: 18/05/2026
-STATUS: INDEX PAGE EM DESENVOLVIMENTO
-
-ALTERAÇÕES DESTA VERSÃO:
-- Compactação removida
-- Layout voltou ao estilo natural
-- Cards mais equilibrados
-- Visual semelhante à página WIFI
-- Mais espaço visual interno
-- Melhor leitura
-- Melhor estética premium
-- Melhor harmonia Matrix
-- Layout menos “dashboard”
-- Cards mais elegantes
-
-CORREÇÕES:
-- Visual comprimido
-- Sensação de cards apertados
-- Interface técnica demais
-- Perda do visual premium
-
-COMPATIBILIDADE:
-- Todas páginas internas
-- GitHub Pages
-- Estrutura preservada
-- Links preservados
-
-ESTILO VISUAL:
-- Matrix Premium
-- Cyberpunk elegante
-- Interface limpa
-- Melhor experiência visual
-========================================================
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>N74 TEC | Soluções em TI</title>
 
-<link href="https://fonts.cdnfonts.com/css/neuropol-2"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
 <style>
 
+/* ================= BASE ================= */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Ubuntu', sans-serif;
 }
 
 html,body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    background:#000;
-
-    font-family:Consolas, monospace;
-
-    color:#00ff41;
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+color:#00ff41;
 }
 
-/* MATRIX */
+/* ================= MATRIX ================= */
 
 canvas{
-
-    position:fixed;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    z-index:0;
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container{
-
-    position:relative;
-
-    z-index:2;
-
-    width:100%;
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:12px;
+position:relative;
+z-index:2;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:14px;
 }
 
-/* PAINEL */
+/* ================= PAINEL ================= */
 
 .panel{
-
-    width:min(96vw, 1350px);
-
-    height:min(94vh, 900px);
-
-    background:rgba(0,0,0,0.58);
-
-    border:1px solid rgba(0,255,65,0.12);
-
-    border-radius:22px;
-
-    backdrop-filter:blur(6px);
-
-    padding:
-    clamp(14px, 1.3vw, 24px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 10px rgba(0,255,65,0.12),
-    0 0 30px rgba(0,255,65,0.06);
+width:min(96vw, 1250px);
+height:min(94vh, 900px);
+background:rgba(0,0,0,0.6);
+border:1px solid rgba(0,255,65,0.12);
+border-radius:20px;
+backdrop-filter:blur(6px);
+padding:18px;
+display:flex;
+flex-direction:column;
 }
 
-/* TOPO */
+/* ================= HEADER ================= */
 
-.top{
-
-    flex-shrink:0;
-
-    text-align:center;
+.header{
+text-align:center;
+margin-top:10px;
 }
-
-/* TÍTULO */
 
 .title{
-
-    font-family:'Neuropol', sans-serif;
-
-    font-size:
-    clamp(26px, 4vw, 72px);
-
-    color:#00ff41;
-
-    letter-spacing:
-    clamp(1px, 0.3vw, 5px);
-
-    text-shadow:
-    0 0 5px #00ff41,
-    0 0 15px #00ff41,
-    0 0 30px #00ff41;
-
-    animation:pulse 2.5s infinite;
-
-    line-height:1.1;
+font-family:'Neuropol', sans-serif;
+font-size:clamp(28px, 4vw, 72px);
+color:#00ff41;
+text-shadow:0 0 15px #00ff41;
+animation:pulse 2.5s infinite;
 }
-
-/* SUBTÍTULO */
 
 .subtitle{
-
-    margin-top:6px;
-
-    color:#00cc33;
-
-    font-size:
-    clamp(9px, 1vw, 16px);
-
-    letter-spacing:
-    clamp(1px, 0.2vw, 4px);
+font-size:14px;
+color:#00cc33;
+margin-top:6px;
 }
 
-/* LINHA */
-
-.line{
-
-    width:100%;
-
-    height:1px;
-
-    margin:
-    clamp(10px, 1vw, 16px) 0;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        #00ff41,
-        transparent
-    );
-}
-
-/* GRID */
+/* ================= GRID ================= */
 
 .services{
-
-    flex:1;
-
-    display:grid;
-
-    grid-template-columns:repeat(4, 1fr);
-
-    gap:
-    clamp(10px, 1vw, 16px);
-
-    overflow:hidden;
+flex:1;
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:12px;
+margin-top:20px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 
 .card{
-
-    background:rgba(0,255,65,0.03);
-
-    border:1px solid rgba(0,255,65,0.10);
-
-    border-radius:
-    clamp(10px, 1vw, 16px);
-
-    padding:
-    clamp(12px, 1vw, 16px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    min-height:
-    clamp(110px, 9vw, 145px);
-
-    transition:0.3s;
-
-    overflow:hidden;
-
-    position:relative;
-
-    text-decoration:none;
+background:rgba(0,255,65,0.03);
+border:1px solid rgba(0,255,65,0.12);
+border-radius:14px;
+padding:14px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+height:140px;
+text-decoration:none;
+color:#00ff41;
+transition:0.2s;
 }
-
-/* PREMIUM */
-
-.premium{
-
-    border:1px solid rgba(0,255,65,0.22);
-
-    box-shadow:
-    0 0 12px rgba(0,255,65,0.10);
-}
-
-/* HOVER */
 
 .card:hover{
-
-    transform:translateY(-3px);
-
-    border-color:#00ff41;
-
-    box-shadow:
-    0 0 14px rgba(0,255,65,0.15);
+transform:translateY(-3px);
+border-color:#00ff41;
 }
-
-/* EFEITO */
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-100%;
-
-    width:100%;
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(0,255,65,0.07),
-        transparent
-    );
-
-    transition:0.8s;
-}
-
-.card:hover::before{
-
-    left:100%;
-}
-
-/* TEXTOS */
 
 .card h3{
-
-    font-size:
-    clamp(11px, 1vw, 18px);
-
-    margin-bottom:8px;
-
-    color:#00ff41;
-
-    line-height:1.2;
+font-size:14px;
+margin-bottom:6px;
 }
 
 .card p{
-
-    font-size:
-    clamp(8px, 0.8vw, 13px);
-
-    line-height:1.4;
-
-    color:#8dffb1;
+font-size:11px;
+color:#b7ffcf;
+line-height:1.4;
 }
-
-/* VER MAIS */
 
 .more{
-
-    margin-top:12px;
-
-    font-size:
-    clamp(7px, 0.7vw, 11px);
-
-    color:#00ff41;
-
-    letter-spacing:1px;
+font-size:10px;
+margin-top:auto;
+color:#00ff41;
 }
 
-/* SOCIAL */
+/* ================= FOOTER (SÓ INDEX) ================= */
+
+.footer{
+text-align:center;
+margin-top:12px;
+font-size:11px;
+color:#00aa33;
+display:flex;
+flex-direction:column;
+gap:6px;
+}
 
 .social{
-
-    flex-shrink:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:
-    clamp(8px, 0.8vw, 14px);
-
-    flex-wrap:wrap;
-
-    margin-top:10px;
+display:flex;
+justify-content:center;
+gap:12px;
 }
 
 .social a{
-
-    text-decoration:none;
-
-    padding:
-    clamp(7px, 0.7vw, 10px)
-    clamp(12px, 1vw, 18px);
-
-    border-radius:10px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-weight:bold;
-
-    font-size:
-    clamp(8px, 0.8vw, 13px);
-
-    transition:0.3s;
+text-decoration:none;
+font-size:12px;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
 }
-
-/* INSTAGRAM */
 
 .instagram{
-
-    background:linear-gradient(
-        45deg,
-        #405DE6,
-        #833AB4,
-        #C13584,
-        #E1306C
-    );
-
-    color:#fff;
+background:linear-gradient(45deg,#405DE6,#833AB4,#E1306C);
 }
-
-/* WHATSAPP */
 
 .whatsapp{
-
-    background:#25D366;
-
-    color:#fff;
+background:#25D366;
 }
 
-.social a:hover{
-
-    transform:translateY(-2px);
-}
-
-/* FOOTER */
-
-.footer{
-
-    flex-shrink:0;
-
-    margin-top:10px;
-
-    text-align:center;
-
-    color:#00aa33;
-
-    font-size:
-    clamp(7px, 0.7vw, 11px);
-
-    letter-spacing:1px;
-}
-
-/* ANIMAÇÃO */
+/* ================= ANIMATION ================= */
 
 @keyframes pulse{
-
-    0%{
-        opacity:0.75;
-    }
-
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0.75;
-    }
+0%{opacity:0.75;}
+50%{opacity:1;}
+100%{opacity:0.75;}
 }
 
-/* RESPONSIVO */
+/* ================= RESPONSIVO ================= */
 
 @media(max-width:1100px){
-
-    .services{
-
-        grid-template-columns:
-        repeat(2, 1fr);
-    }
+.services{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:520px){
-
-    .services{
-
-        grid-template-columns:1fr;
-    }
+.services{grid-template-columns:1fr;}
 }
 
 </style>
+
 </head>
 
 <body>
@@ -480,215 +199,76 @@ canvas{
 
 <div class="panel">
 
-<div class="top">
+<!-- HEADER -->
+<div class="header">
 
-<div class="title">
-N74 TEC
-</div>
-
-<div class="subtitle">
-SOLUÇÕES EM TI
-</div>
+<div class="title">N74 TEC</div>
+<div class="subtitle">Soluções em TI</div>
 
 </div>
 
-<div class="line"></div>
-
+<!-- 8 SERVIÇOS -->
 <div class="services">
 
-<a class="card"
-href="pages/suporte-tecnico.html">
-
-<div>
-
+<a class="card" href="pages/suporte-tecnico.html">
 <h3>SUPORTE TÉCNICO</h3>
-
-<p>
-Suporte para computadores,
-notebooks e sistemas...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<p>Manutenção de computadores e sistemas.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/redes-wifi.html">
-
-<div>
-
-<h3>REDES & WIFI</h3>
-
-<p>
-Redes residenciais
-e corporativas...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<a class="card" href="pages/redes-wifi.html">
+<h3>REDES & WI-FI</h3>
+<p>Configuração e redes corporativas.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/cftv-seguranca.html">
-
-<div>
-
-<h3>CFTV & SEGURANÇA</h3>
-
-<p>
-Câmeras e monitoramento
-inteligente...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<a class="card" href="pages/cftv-seguranca.html">
+<h3>CFTV</h3>
+<p>Monitoramento e câmeras.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/servidores.html">
-
-<div>
-
+<a class="card" href="pages/servidores.html">
 <h3>SERVIDORES</h3>
-
-<p>
-Estruturação
-e gerenciamento...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<p>Infraestrutura e gerenciamento.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/formatacao-backup.html">
-
-<div>
-
-<h3>FORMATAÇÃO & BACKUP</h3>
-
-<p>
-Otimização
-e recuperação...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<a class="card" href="pages/formatacao-backup.html">
+<h3>BACKUP</h3>
+<p>Segurança e formatação.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/suporte-remoto.html">
-
-<div>
-
+<a class="card" href="pages/suporte-remoto.html">
 <h3>SUPORTE REMOTO</h3>
-
-<p>
-Atendimento remoto
-imediato...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<p>Atendimento remoto imediato.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card"
-href="pages/atendimento-avulso.html">
-
-<div>
-
-<h3>ATENDIMENTO AVULSO</h3>
-
-<p>
-Atendimento sob demanda
-e emergencial...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<a class="card" href="pages/atendimento-avulso.html">
+<h3>AVULSO</h3>
+<p>Atendimento sob demanda.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
-<a class="card premium"
-href="pages/contrato-manutencao.html">
-
-<div>
-
-<h3>CONTRATO DE MANUTENÇÃO</h3>
-
-<p>
-Suporte contínuo
-para empresas...
-</p>
-
-</div>
-
-<span class="more">
-VER MAIS →
-</span>
-
+<a class="card" href="pages/contrato-manutencao.html">
+<h3>CONTRATO</h3>
+<p>Suporte mensal empresarial.</p>
+<span class="more">VER MAIS →</span>
 </a>
 
 </div>
 
-<div class="line"></div>
-
-<div class="social">
-
-<a
-class="instagram"
-href="https://www.instagram.com/n74tec/"
-target="_blank">
-
-<i class="fa-brands fa-instagram"></i>
-
-@n74tec
-
-</a>
-
-<a
-class="whatsapp"
-href="https://wa.me/5511958733142"
-target="_blank">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-(11) 95873-3142
-
-</a>
-
-</div>
-
+<!-- FOOTER GLOBAL (SÓ INDEX) -->
 <div class="footer">
 
-N74 TEC © 2026 • N74 TEC | Soluções em TI
+<div class="social">
+<a class="instagram" href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a class="whatsapp" href="https://wa.me/5511958733142" target="_blank">WhatsApp</a>
+</div>
+
+<div>N74 TEC © 2026 • Soluções em TI</div>
 
 </div>
 
@@ -697,114 +277,54 @@ N74 TEC © 2026 • N74 TEC | Soluções em TI
 
 <script>
 
-const canvas =
-document.getElementById("matrix");
+/* MATRIX */
 
-const ctx =
-canvas.getContext("2d");
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-function resizeCanvas(){
-
-canvas.width =
-window.innerWidth;
-
-canvas.height =
-window.innerHeight;
-
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 }
 
-resizeCanvas();
+resize();
 
-const letters =
-"アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize=16;
+let columns=canvas.width/fontSize;
+let drops=[];
 
-const chars =
-letters.split("");
-
-const fontSize = 16;
-
-let columns =
-canvas.width / fontSize;
-
-let drops = [];
-
-function setupDrops(){
-
-columns =
-canvas.width / fontSize;
-
-drops = [];
-
-for(let i = 0; i < columns; i++){
-
-drops[i] = 1;
-
+function init(){
+columns=canvas.width/fontSize;
+drops=Array.from({length:columns},()=>1);
 }
 
-}
-
-setupDrops();
+init();
 
 function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle =
-"rgba(0,0,0,0.06)";
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
 
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
+for(let i=0;i<drops.length;i++){
+let text=chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-ctx.fillStyle =
-"#00ff41";
-
-ctx.font =
-fontSize + "px monospace";
-
-for(let i = 0; i < drops.length; i++){
-
-const text =
-chars[
-Math.floor(
-Math.random() * chars.length
-)
-];
-
-ctx.fillText(
-text,
-i * fontSize,
-drops[i] * fontSize
-);
-
-if(
-drops[i] * fontSize >
-canvas.height &&
-Math.random() > 0.985
-){
-
-drops[i] = 0;
-
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]+=0.7;
+}
 }
 
-drops[i] += 0.6;
+setInterval(draw,50);
 
-}
-
-}
-
-setInterval(draw, 60);
-
-window.addEventListener(
-"resize",
-() => {
-
-resizeCanvas();
-setupDrops();
-
-}
-);
+window.addEventListener("resize",()=>{
+resize();
+init();
+});
 
 </script>
 
