@@ -3,12 +3,14 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Soluções em TI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
@@ -24,10 +26,13 @@ font-weight:300;
 
 html,body{
 width:100%;
-height:100%;
-overflow:hidden;
+min-height:100%;
 background:#000;
 color:#00ff41;
+overflow-x:hidden;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+padding-bottom:70px; /* espaço da barra */
 }
 
 /* ================= MATRIX ================= */
@@ -38,14 +43,15 @@ inset:0;
 width:100%;
 height:100%;
 z-index:0;
+pointer-events:none;
 }
 
-/* 🔒 CAMADA DE LEITURA (ESSENCIAL) */
+/* overlay */
 body::before{
 content:"";
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.82);
+background:rgba(0,0,0,0.70);
 z-index:1;
 }
 
@@ -55,24 +61,26 @@ z-index:1;
 position:relative;
 z-index:2;
 width:100%;
-height:100vh;
+min-height:100dvh;
 display:flex;
 justify-content:center;
-align-items:center;
-padding:12px;
+align-items:flex-start;
+padding:10px;
 }
 
-/* ================= PAINEL ================= */
+/* ================= PANEL ================= */
 
 .panel{
-width:min(100%, 1200px);
-height:min(100vh, 900px);
+width:100%;
+max-width:1100px;
 
-background:rgba(0,0,0,0.55);
-border:1px solid rgba(0,255,65,0.12);
-border-radius:18px;
+min-height:100dvh;
 
-padding:14px;
+background:rgba(0,0,0,0.45);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:16px;
+
+padding:12px;
 
 display:flex;
 flex-direction:column;
@@ -82,23 +90,20 @@ flex-direction:column;
 
 .header{
 text-align:center;
-margin-top:8px;
+margin-top:6px;
 }
 
 .title{
 font-family:'Neuropol', sans-serif;
-font-size:clamp(28px, 5vw, 64px);
+font-size:clamp(26px, 6vw, 50px);
 color:#00ff41;
-text-shadow:0 0 12px #00ff41;
-animation:pulse 2.8s infinite;
-font-weight:300;
+text-shadow:0 0 10px #00ff41;
 }
 
 .subtitle{
-font-size:13px;
+font-size:12px;
 color:#00cc33;
 margin-top:4px;
-font-weight:300;
 }
 
 /* ================= GRID ================= */
@@ -106,19 +111,19 @@ font-weight:300;
 .services{
 flex:1;
 display:grid;
-grid-template-columns:repeat(4, 1fr);
+grid-template-columns:repeat(2, 1fr);
 gap:10px;
-margin-top:14px;
+margin-top:12px;
 }
 
 /* ================= CARD ================= */
 
 .card{
 background:rgba(0,0,0,0.88);
-border:1px solid rgba(0,255,65,0.15);
+border:1px solid rgba(0,255,65,0.18);
 border-radius:12px;
 
-padding:12px;
+padding:10px;
 min-height:120px;
 
 display:flex;
@@ -127,92 +132,75 @@ justify-content:space-between;
 
 text-decoration:none;
 color:#00ff41;
-
-transition:0.2s ease;
-
-font-weight:300;
-}
-
-.card:hover{
-transform:translateY(-2px);
-border-color:#00ff41;
 }
 
 .card h3{
-font-size:13px;
+font-size:12px;
 font-weight:300;
-margin-bottom:6px;
 }
 
 .card p{
 font-size:11px;
 color:#b7ffcf;
 line-height:1.4;
-font-weight:300;
+margin-top:4px;
 }
 
 .more{
 font-size:10px;
 color:#00ff41;
 opacity:0.9;
+margin-top:8px;
 }
 
-/* ================= FOOTER ================= */
+/* ================= BOTTOM NAV (WHATSAPP STYLE) ================= */
 
-.footer{
-margin-top:10px;
-text-align:center;
-font-size:10px;
-color:#00aa33;
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
 
+display:flex;
+justify-content:space-around;
+align-items:center;
+
+background:rgba(0,0,0,0.88);
+backdrop-filter: blur(10px);
+
+border-top:1px solid rgba(0,255,65,0.2);
+
+padding:10px 0;
+
+z-index:9999;
+}
+
+.nav-item{
 display:flex;
 flex-direction:column;
-gap:6px;
-font-weight:300;
-}
-
-.social{
-display:flex;
+align-items:center;
 justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
 
-.social a{
 text-decoration:none;
-font-size:11px;
-padding:6px 10px;
-border-radius:6px;
-font-weight:300;
+color:#00ff41;
+
+font-size:10px;
+gap:4px;
 }
 
-.instagram{
-background:linear-gradient(45deg,#405DE6,#833AB4,#E1306C);
-color:white;
+.nav-item i{
+font-size:18px;
 }
 
-.whatsapp{
-background:#25D366;
-color:black;
+.nav-item:active{
+transform:scale(0.95);
+opacity:0.7;
 }
 
-/* ================= ANIMATION ================= */
+/* ================= RESPONSIVO ================= */
 
-@keyframes pulse{
-0%{opacity:0.75;}
-50%{opacity:1;}
-100%{opacity:0.75;}
-}
-
-/* ================= RESPONSIVO REAL ================= */
-
-@media(max-width:1000px){
-.services{grid-template-columns:repeat(2,1fr);}
-}
-
-@media(max-width:520px){
+@media(max-width:480px){
 .services{grid-template-columns:1fr;}
-.panel{padding:10px;}
 }
 
 </style>
@@ -229,79 +217,86 @@ color:black;
 
 <!-- HEADER -->
 <div class="header">
-
 <div class="title">N74 TEC</div>
 <div class="subtitle">Soluções em TI</div>
-
 </div>
 
-<!-- SERVIÇOS (8 CARDS) -->
+<!-- SERVIÇOS -->
 <div class="services">
 
 <a class="card" href="pages/suporte-tecnico.html">
 <h3>SUPORTE TÉCNICO</h3>
-<p>Resolvemos problemas em computadores e sistemas de forma simples e rápida.</p>
-<span class="more">VER MAIS →</span>
+<p>Resolvemos problemas no seu computador, lentidão e erros do sistema.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/redes-wifi.html">
 <h3>REDES & WI-FI</h3>
-<p>Configuração e melhoria da sua internet e rede local.</p>
-<span class="more">VER MAIS →</span>
+<p>Melhoramos sua internet e estabilidade da rede.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/cftv.html">
 <h3>CFTV</h3>
-<p>Câmeras e monitoramento para segurança do ambiente.</p>
-<span class="more">VER MAIS →</span>
+<p>Instalação e manutenção de câmeras de segurança.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/servidores.html">
 <h3>SERVIDORES</h3>
-<p>Organização e manutenção da estrutura de TI.</p>
-<span class="more">VER MAIS →</span>
+<p>Estrutura e organização de sistemas empresariais.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/backup.html">
 <h3>BACKUP</h3>
-<p>Proteção e recuperação de arquivos importantes.</p>
-<span class="more">VER MAIS →</span>
+<p>Proteção e segurança dos seus arquivos.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/suporte-remoto.html">
 <h3>SUPORTE REMOTO</h3>
-<p>Atendimento sem precisar sair de casa ou da empresa.</p>
-<span class="more">VER MAIS →</span>
+<p>Atendimento rápido sem visita técnica.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/avulso.html">
 <h3>ATENDIMENTO AVULSO</h3>
-<p>Serviço pontual quando você precisa de ajuda rápida.</p>
-<span class="more">VER MAIS →</span>
+<p>Serviço pontual para problemas específicos.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 <a class="card" href="pages/contrato.html">
 <h3>CONTRATO MENSAL</h3>
-<p>Suporte contínuo com acompanhamento recorrente.</p>
-<span class="more">VER MAIS →</span>
+<p>Suporte contínuo com prioridade no atendimento.</p>
+<span class="more">VER MAIS</span>
 </a>
 
 </div>
 
-<!-- FOOTER (ÚNICO DA INDEX) -->
-<div class="footer">
-
-<div class="social">
-<a class="instagram" href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
-<a class="whatsapp" href="https://wa.me/5511958733142" target="_blank">WhatsApp</a>
-</div>
-
-<div>N74 TEC © 2026 • Soluções em TI</div>
-
 </div>
 
 </div>
-</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+<a class="nav-item" href="index.html">
+<i class="fa-solid fa-house"></i>
+<span>Home</span>
+</a>
+
+<a class="nav-item" href="#services">
+<i class="fa-solid fa-grid-2"></i>
+<span>Serviços</span>
+</a>
+
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+<span>Contato</span>
+</a>
+
+</nav>
 
 <script>
 
@@ -311,13 +306,12 @@ const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 
 function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 }
-
 resize();
 
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
 const fontSize=15;
 
 let columns=canvas.width/fontSize;
@@ -327,12 +321,11 @@ function init(){
 columns=canvas.width/fontSize;
 drops=Array.from({length:columns},()=>1);
 }
-
 init();
 
 function draw(){
 
-ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillStyle="rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ctx.fillStyle="#00ff41";
@@ -342,15 +335,15 @@ for(let i=0;i<drops.length;i++){
 let text=chars[Math.floor(Math.random()*chars.length)];
 ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+if(drops[i]*fontSize>canvas.height && Math.random()>0.97){
 drops[i]=0;
 }
-drops[i]+=0.65;
+drops[i]+=0.75;
 }
 
 }
 
-setInterval(draw,50);
+setInterval(draw,45);
 
 window.addEventListener("resize",()=>{
 resize();
