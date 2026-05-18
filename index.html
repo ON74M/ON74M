@@ -1,20 +1,687 @@
+<!--
+========================================================
+N74 TEC | MATRIX WEBSITE
+VERSÃO: V6.1 FULL AUTO RESPONSIVE
+DATA: 18/05/2026
+STATUS: EM DESENVOLVIMENTO
+
+ALTERAÇÕES DESTA VERSÃO:
+- Cards reduzidos
+- Escala automática do layout
+- Tudo redimensiona proporcionalmente
+- Painel adaptável em qualquer janela
+- Fonte dinâmica com clamp()
+- Grid mais compacto
+- Alturas ajustadas automaticamente
+- Melhor aproveitamento de espaço
+- Correção do corte em zoom 100%
+
+MELHORIAS VISUAIS:
+- Interface mais limpa
+- Cards menos “pesados”
+- Espaçamento reduzido
+- Layout mais premium
+- Melhor leitura em notebook
+
+PRÓXIMAS IDEIAS:
+- Modal VER MAIS
+- Segunda tela dos serviços
+- Terminal hacker animado
+- Sistema de partículas
+- Efeito glitch
+========================================================
+-->
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionamento</title>
-    <meta http-equiv="refresh" content="0;url=https://www.instagram.com/n74tec">
-    <style>
-        /* O código CSS abaixo garante que não haja estilos aplicados, e a página será invisível para o usuário */
-        body {
-            margin: 0;
-            padding: 0;
-            background: transparent;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N74 TEC | Soluções em TI</title>
+
+<!-- FONTE -->
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+
+<!-- ÍCONES -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#000;
+
+    font-family:Consolas, monospace;
+
+    color:#00ff41;
+}
+
+/* MATRIX */
+
+canvas{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:0;
+}
+
+/* CONTAINER */
+
+.container{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:clamp(8px, 1vw, 18px);
+}
+
+/* PAINEL */
+
+.panel{
+
+    width:min(95vw, 1200px);
+
+    height:min(94vh, 900px);
+
+    background:rgba(0,0,0,0.58);
+
+    border:1px solid rgba(0,255,65,0.15);
+
+    border-radius:clamp(12px, 2vw, 24px);
+
+    backdrop-filter:blur(5px);
+
+    padding:
+    clamp(12px, 1.5vw, 30px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    box-shadow:
+    0 0 10px rgba(0,255,65,0.18),
+    0 0 25px rgba(0,255,65,0.08);
+}
+
+/* TOPO */
+
+.top{
+
+    text-align:center;
+}
+
+/* TÍTULO */
+
+.title{
+
+    font-family:'Neuropol', sans-serif;
+
+    font-size:clamp(28px, 4vw, 72px);
+
+    color:#00ff41;
+
+    letter-spacing:clamp(2px, 0.4vw, 6px);
+
+    text-shadow:
+    0 0 5px #00ff41,
+    0 0 15px #00ff41,
+    0 0 30px #00ff41;
+
+    animation:pulse 2.5s infinite;
+}
+
+.subtitle{
+
+    margin-top:8px;
+
+    color:#00cc33;
+
+    font-size:clamp(9px, 1vw, 17px);
+
+    letter-spacing:clamp(1px, 0.3vw, 4px);
+}
+
+/* LINHA */
+
+.line{
+
+    width:100%;
+
+    height:1px;
+
+    margin:
+    clamp(10px, 1vw, 18px) 0;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        #00ff41,
+        transparent
+    );
+}
+
+/* SERVIÇOS */
+
+.services{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:clamp(8px, 1vw, 16px);
+
+    align-content:center;
+}
+
+/* CARDS */
+
+.card{
+
+    background:rgba(0,255,65,0.03);
+
+    border:1px solid rgba(0,255,65,0.10);
+
+    border-radius:clamp(10px, 1vw, 18px);
+
+    padding:
+    clamp(10px, 1vw, 18px);
+
+    transition:0.3s;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:clamp(90px, 10vw, 145px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#00ff41;
+
+    box-shadow:
+    0 0 10px rgba(0,255,65,0.18);
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,255,65,0.08),
+        transparent
+    );
+
+    transition:0.8s;
+}
+
+.card:hover::before{
+
+    left:100%;
+}
+
+/* TEXTOS */
+
+.card h3{
+
+    font-size:clamp(12px, 1vw, 18px);
+
+    color:#00ff41;
+
+    margin-bottom:8px;
+}
+
+.card p{
+
+    color:#8dffb1;
+
+    line-height:1.4;
+
+    font-size:clamp(10px, 0.8vw, 13px);
+}
+
+.more{
+
+    margin-top:10px;
+
+    color:#00ff41;
+
+    font-size:clamp(9px, 0.7vw, 12px);
+
+    letter-spacing:1px;
+}
+
+/* SOCIAL */
+
+.social{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:clamp(8px, 1vw, 16px);
+
+    flex-wrap:wrap;
+
+    margin-top:12px;
+}
+
+.social a{
+
+    text-decoration:none;
+
+    padding:
+    clamp(8px, 0.8vw, 12px)
+    clamp(14px, 1vw, 22px);
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:bold;
+
+    font-size:
+    clamp(10px, 0.9vw, 14px);
+
+    transition:0.3s;
+}
+
+/* INSTAGRAM */
+
+.instagram{
+
+    background:linear-gradient(
+        45deg,
+        #405DE6,
+        #833AB4,
+        #C13584,
+        #E1306C
+    );
+
+    color:#fff;
+
+    box-shadow:
+    0 0 10px rgba(193,53,132,0.35);
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+
+    background:#25D366;
+
+    color:#fff;
+
+    box-shadow:
+    0 0 10px rgba(37,211,102,0.25);
+}
+
+.social a:hover{
+
+    transform:translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    color:#00aa33;
+
+    font-size:clamp(8px, 0.7vw, 12px);
+
+    letter-spacing:1px;
+
+    opacity:0.9;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes pulse{
+
+    0%{
+        opacity:0.75;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0.75;
+    }
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .services{
+
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media(max-width:620px){
+
+    .services{
+
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+
+        height:auto;
+
+        min-height:96vh;
+    }
+
+    .social{
+
+        flex-direction:column;
+    }
+
+    .social a{
+
+        justify-content:center;
+    }
+}
+
+</style>
 </head>
+
 <body>
-    <!-- O corpo da página está vazio porque o redirecionamento é automático -->
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+    <div class="panel">
+
+        <!-- TOPO -->
+
+        <div class="top">
+
+            <div class="title">
+                N74 TEC
+            </div>
+
+            <div class="subtitle">
+                SOLUÇÕES EM TI
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <!-- SERVIÇOS -->
+
+        <div class="services">
+
+            <div class="card">
+
+                <div>
+                    <h3>SUPORTE TÉCNICO</h3>
+
+                    <p>
+                        Suporte para computadores,
+                        notebooks e sistemas...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <div>
+                    <h3>REDES & WIFI</h3>
+
+                    <p>
+                        Redes residenciais
+                        e empresariais...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <div>
+                    <h3>CFTV & SEGURANÇA</h3>
+
+                    <p>
+                        Monitoramento,
+                        câmeras e proteção...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <div>
+                    <h3>FORMATAÇÃO & BACKUP</h3>
+
+                    <p>
+                        Limpeza, otimização
+                        e recuperação...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <div>
+                    <h3>SERVIDORES</h3>
+
+                    <p>
+                        Estruturação
+                        e gerenciamento...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+            <div class="card">
+
+                <div>
+                    <h3>SUPORTE REMOTO</h3>
+
+                    <p>
+                        Atendimento técnico
+                        remoto imediato...
+                    </p>
+                </div>
+
+                <span class="more">
+                    VER MAIS →
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <!-- SOCIAL -->
+
+        <div class="social">
+
+            <a
+                class="instagram"
+                href="https://www.instagram.com/n74tec/"
+                target="_blank"
+            >
+                <i class="fa-brands fa-instagram"></i>
+                @n74tec
+            </a>
+
+            <a
+                class="whatsapp"
+                href="https://wa.me/5511958733142"
+                target="_blank"
+            >
+                <i class="fa-brands fa-whatsapp"></i>
+                (11) 95873-3142
+            </a>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+            N74 TEC © 2026 • N74 TEC | Soluções em TI
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters =
+"アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const chars = letters.split("");
+
+const fontSize = 16;
+
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let i = 0; i < columns; i++){
+    drops[i] = 1;
+}
+
+function draw(){
+
+    ctx.fillStyle = "rgba(0,0,0,0.06)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#00ff41";
+
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++){
+
+        const text =
+        chars[Math.floor(Math.random() * chars.length)];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if(
+            drops[i] * fontSize > canvas.height &&
+            Math.random() > 0.985
+        ){
+            drops[i] = 0;
+        }
+
+        drops[i] += 0.6;
+    }
+}
+
+setInterval(draw, 60);
+
+window.addEventListener("resize", () => {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
+
+</script>
+
 </body>
 </html>
