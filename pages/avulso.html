@@ -10,12 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 
-/* ================= RESET ================= */
-
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -32,13 +29,9 @@ color:#00ff41;
 
 overflow-x:hidden;
 overflow-y:auto;
--webkit-overflow-scrolling:touch;
-
-padding-bottom:80px;
 }
 
-/* ================= MATRIX ================= */
-
+/* MATRIX */
 canvas{
 position:fixed;
 inset:0;
@@ -56,8 +49,7 @@ background:rgba(0,0,0,0.72);
 z-index:1;
 }
 
-/* ================= CONTAINER ================= */
-
+/* CONTAINER */
 .container{
 position:relative;
 z-index:2;
@@ -71,8 +63,7 @@ align-items:flex-start;
 padding:12px;
 }
 
-/* ================= PANEL ================= */
-
+/* PANEL */
 .panel{
 width:100%;
 max-width:1100px;
@@ -87,8 +78,7 @@ display:flex;
 flex-direction:column;
 }
 
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header{
 text-align:center;
 margin-top:6px;
@@ -107,8 +97,7 @@ color:#00cc33;
 margin-top:4px;
 }
 
-/* ================= CONTENT ================= */
-
+/* CONTENT */
 .content{
 display:flex;
 flex-direction:column;
@@ -116,8 +105,7 @@ gap:10px;
 margin-top:14px;
 }
 
-/* ================= CARD ================= */
-
+/* CARD */
 .card{
 background:rgba(0,0,0,0.88);
 border:1px solid rgba(0,255,65,0.18);
@@ -140,57 +128,6 @@ font-size:11px;
 line-height:1.5;
 }
 
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-
-display:flex;
-justify-content:space-around;
-align-items:center;
-
-background:rgba(0,0,0,0.88);
-backdrop-filter: blur(10px);
-
-border-top:1px solid rgba(0,255,65,0.2);
-
-padding:10px 0;
-
-z-index:9999;
-}
-
-.nav-item{
-display:flex;
-flex-direction:column;
-align-items:center;
-
-text-decoration:none;
-color:#00ff41;
-
-font-size:10px;
-gap:4px;
-}
-
-.nav-item i{
-font-size:18px;
-}
-
-.nav-item:active{
-transform:scale(0.95);
-opacity:0.7;
-}
-
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:480px){
-.card p{
-font-size:10.5px;
-}
-}
-
 </style>
 
 </head>
@@ -203,62 +140,31 @@ font-size:10.5px;
 
 <div class="panel">
 
-<!-- HEADER -->
 <div class="header">
 <div class="title">ATENDIMENTO AVULSO</div>
 <div class="subtitle">N74 TEC | Soluções em TI</div>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
 
 <div class="card">
-<h3>O que é o Atendimento Avulso?</h3>
-<p>
-Serviço pontual para resolução de problemas específicos, sem necessidade de contrato ou mensalidade.
-</p>
+<h3>O que é?</h3>
+<p>Serviço pontual para resolução de problemas específicos sem contrato.</p>
 </div>
 
 <div class="card">
-<h3>Quando utilizar?</h3>
-<p>
-Quando surge um problema isolado como erro no computador, lentidão, configuração ou falha de sistema.
-</p>
+<h3>Quando usar?</h3>
+<p>Problemas isolados como lentidão, vírus, configuração ou erro de sistema.</p>
 </div>
 
 <div class="card">
 <h3>Como funciona?</h3>
-<p>
-O cliente solicita o atendimento, realizamos a análise do problema e executamos a solução de forma direta.
-</p>
-</div>
-
-<div class="card">
-<h3>O que pode ser resolvido?</h3>
-<p>
-Instalação de programas, remoção de vírus, ajustes de sistema, configurações e correções simples.
-</p>
-</div>
-
-<div class="card">
-<h3>Diferença para contrato</h3>
-<p>
-O atendimento avulso é cobrado por chamado único, sem vínculo mensal ou continuidade de suporte.
-</p>
+<p>Análise do problema e execução da solução direta no atendimento.</p>
 </div>
 
 <div class="card">
 <h3>Vantagens</h3>
-<p>
-Sem mensalidade, sem compromisso fixo e ideal para quem precisa de suporte ocasional.
-</p>
-</div>
-
-<div class="card">
-<h3>Para quem é este serviço?</h3>
-<p>
-Indicado para usuários domésticos e empresas que precisam de suporte esporádico.
-</p>
+<p>Sem mensalidade, sem vínculo e ideal para demandas ocasionais.</p>
 </div>
 
 </div>
@@ -266,30 +172,10 @@ Indicado para usuários domésticos e empresas que precisam de suporte esporádi
 </div>
 
 </div>
-
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
-
-<a class="nav-item" href="../index.html">
-<i class="fa-solid fa-house"></i>
-<span>Home</span>
-</a>
-
-<a class="nav-item" href="../index.html#services">
-<i class="fa-solid fa-grid-2"></i>
-<span>Serviços</span>
-</a>
-
-<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
-<i class="fa-solid fa-phone"></i>
-<span>Contato</span>
-</a>
-
-</nav>
 
 <script>
 
-/* MATRIX */
+/* MATRIX (opcional nas páginas internas) */
 
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
@@ -303,7 +189,7 @@ resize();
 const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
 const fontSize=15;
 
-let columns=canvas.width/fontSize;
+let columns;
 let drops=[];
 
 function init(){
