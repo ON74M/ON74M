@@ -3,192 +3,283 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Redes & Wi-Fi</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
+rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2"
+rel="stylesheet">
 
 <style>
 
-/* ================= RESET ================= */
+/* ==================================================
+RESET
+================================================== */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Ubuntu', sans-serif;
+
+font-family:'Ubuntu',sans-serif;
 font-weight:300;
 }
 
-html,body{
+/* ==================================================
+BODY
+================================================== */
+
+html,
+body{
 width:100%;
 min-height:100%;
-background:#000;
-color:#00ff41;
+
+background:transparent;
 
 overflow-x:hidden;
-overflow-y:auto;
--webkit-overflow-scrolling:touch;
 
-padding-bottom:80px;
+color:#00ff41;
 }
 
-/* ================= MATRIX ================= */
+/* ==================================================
+PAGE
+================================================== */
 
-canvas{
-position:fixed;
-inset:0;
+.page{
+position:relative;
+
+z-index:2;
+
 width:100%;
-height:100%;
-z-index:0;
-pointer-events:none;
+
+padding:
+18px
+14px
+90px;
 }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.72);
-z-index:1;
-}
-
-/* ================= CONTAINER ================= */
+/* ==================================================
+CONTAINER
+================================================== */
 
 .container{
-position:relative;
-z-index:2;
 width:100%;
-min-height:100dvh;
+max-width:1000px;
 
-display:flex;
-justify-content:center;
-align-items:flex-start;
-
-padding:12px;
+margin:auto;
 }
 
-/* ================= PANEL ================= */
-
-.panel{
-width:100%;
-max-width:1100px;
-
-background:rgba(0,0,0,0.45);
-border:1px solid rgba(0,255,65,0.15);
-border-radius:16px;
-
-padding:12px;
-
-display:flex;
-flex-direction:column;
-}
-
-/* ================= HEADER ================= */
+/* ==================================================
+HEADER
+================================================== */
 
 .header{
-text-align:center;
-margin-top:6px;
+margin-bottom:18px;
 }
+
+/* ==================================================
+TITLE
+================================================== */
 
 .title{
-font-family:'Neuropol', sans-serif;
-font-size:clamp(24px, 5.5vw, 44px);
+font-family:'Neuropol',sans-serif;
+
+font-size:
+clamp(24px,6vw,42px);
+
 color:#00ff41;
-text-shadow:0 0 10px #00ff41;
+
+text-shadow:
+0 0 10px rgba(0,255,65,0.25);
 }
+
+/* ==================================================
+SUBTITLE
+================================================== */
 
 .subtitle{
-font-size:12px;
-color:#00cc33;
-margin-top:4px;
-}
+margin-top:8px;
 
-/* ================= CONTENT ================= */
+font-size:13px;
 
-.content{
-display:flex;
-flex-direction:column;
-gap:10px;
-margin-top:14px;
-}
-
-/* ================= CARD ================= */
-
-.card{
-background:rgba(0,0,0,0.88);
-border:1px solid rgba(0,255,65,0.18);
-border-radius:12px;
-
-padding:12px;
+line-height:1.6;
 
 color:#b7ffcf;
 }
 
-.card h3{
-color:#00ff41;
-font-size:12px;
-font-weight:300;
-margin-bottom:6px;
+/* ==================================================
+GRID
+================================================== */
+
+.grid{
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:12px;
 }
+
+/* ==================================================
+CARD
+================================================== */
+
+.card{
+background:
+rgba(0,0,0,0.82);
+
+border:
+1px solid rgba(0,255,65,0.12);
+
+border-radius:14px;
+
+padding:16px;
+
+backdrop-filter:blur(4px);
+
+transition:0.2s ease;
+}
+
+/* ==================================================
+CARD ACTIVE
+================================================== */
+
+.card:active{
+transform:scale(0.985);
+}
+
+/* ==================================================
+CARD TITLE
+================================================== */
+
+.card h3{
+font-size:14px;
+
+margin-bottom:10px;
+
+color:#00ff41;
+}
+
+/* ==================================================
+CARD TEXT
+================================================== */
 
 .card p{
-font-size:11px;
-line-height:1.5;
+font-size:12px;
+
+line-height:1.7;
+
+color:#c9ffd8;
 }
 
-/* ================= BOTTOM NAV ================= */
+/* ==================================================
+INFO BOX
+================================================== */
 
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
+.info-box{
+margin-top:18px;
+
+background:
+rgba(0,0,0,0.82);
+
+border:
+1px solid rgba(0,255,65,0.10);
+
+border-radius:14px;
+
+padding:18px;
+}
+
+/* ==================================================
+INFO TITLE
+================================================== */
+
+.info-title{
+font-size:15px;
+
+margin-bottom:10px;
+
+color:#00ff41;
+}
+
+/* ==================================================
+INFO TEXT
+================================================== */
+
+.info-text{
+font-size:12px;
+
+line-height:1.8;
+
+color:#b7ffcf;
+}
+
+/* ==================================================
+WHATS BUTTON
+================================================== */
+
+.whatsapp-btn{
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+margin-top:18px;
+
 width:100%;
+height:52px;
 
-display:flex;
-justify-content:space-around;
-align-items:center;
-
-background:rgba(0,0,0,0.88);
-backdrop-filter: blur(10px);
-
-border-top:1px solid rgba(0,255,65,0.2);
-
-padding:10px 0;
-
-z-index:9999;
-}
-
-.nav-item{
-display:flex;
-flex-direction:column;
-align-items:center;
+border-radius:14px;
 
 text-decoration:none;
+
+background:
+rgba(0,255,65,0.08);
+
+border:
+1px solid rgba(0,255,65,0.18);
+
 color:#00ff41;
 
-font-size:10px;
-gap:4px;
+font-size:13px;
+
+transition:0.2s ease;
 }
 
-.nav-item i{
-font-size:18px;
+/* ==================================================
+WHATS ACTIVE
+================================================== */
+
+.whatsapp-btn:active{
+transform:scale(0.98);
+
+opacity:0.8;
 }
 
-.nav-item:active{
-transform:scale(0.95);
-opacity:0.7;
+/* ==================================================
+RESPONSIVO
+================================================== */
+
+@media(max-width:700px){
+
+.grid{
+grid-template-columns:1fr;
 }
 
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:480px){
-.card p{
-font-size:10.5px;
 }
+
+/* ==================================================
+SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar{
+width:0;
+height:0;
 }
 
 </style>
@@ -197,157 +288,141 @@ font-size:10.5px;
 
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- ==================================================
+PAGE
+================================================== -->
+
+<div class="page">
 
 <div class="container">
 
-<div class="panel">
+<!-- ==================================================
+HEADER
+================================================== -->
 
-<!-- HEADER -->
 <div class="header">
-<div class="title">REDES & WI-FI</div>
-<div class="subtitle">N74 TEC | Soluções em TI</div>
+
+<div class="title">
+REDES & WI-FI
 </div>
 
-<!-- CONTENT -->
-<div class="content">
+<div class="subtitle">
+
+Estruturação, otimização e correção
+de redes residenciais e empresariais.
+
+</div>
+
+</div>
+
+<!-- ==================================================
+GRID
+================================================== -->
+
+<div class="grid">
+
+<!-- CARD -->
 
 <div class="card">
-<h3>O que é o serviço de Redes & Wi-Fi?</h3>
+
+<h3>
+CONFIGURAÇÃO DE ROTEADORES
+</h3>
+
 <p>
-Serviço voltado para melhorar, configurar e estabilizar redes de internet em residências e empresas,
-garantindo conexão mais rápida e estável.
+Instalação, configuração avançada,
+troca de senha, atualização e otimização
+de roteadores Wi-Fi.
 </p>
+
 </div>
+
+<!-- CARD -->
 
 <div class="card">
-<h3>Instalação de Roteadores</h3>
+
+<h3>
+MELHORIA DE SINAL
+</h3>
+
 <p>
-Configuração completa de roteadores, ajustes de senha, nome da rede (SSID) e otimização do sinal Wi-Fi.
+Correção de áreas sem cobertura,
+internet lenta, quedas de conexão
+e interferências no Wi-Fi.
 </p>
+
 </div>
+
+<!-- CARD -->
 
 <div class="card">
-<h3>Melhoria de Sinal Wi-Fi</h3>
+
+<h3>
+REDES EMPRESARIAIS
+</h3>
+
 <p>
-Correção de pontos de falha de sinal, análise de cobertura e melhoria da distribuição da internet no ambiente.
+Estruturação de ambientes corporativos,
+switches, access points e organização
+da infraestrutura de rede.
 </p>
+
 </div>
+
+<!-- CARD -->
 
 <div class="card">
-<h3>Rede Cabeada</h3>
+
+<h3>
+SEGURANÇA DA REDE
+</h3>
+
 <p>
-Instalação e organização de cabos de rede para maior estabilidade e velocidade na conexão.
+Proteção contra acessos indevidos,
+configuração segura da rede e
+segmentação de dispositivos.
 </p>
-</div>
-
-<div class="card">
-<h3>Compartilhamento de Rede</h3>
-<p>
-Configuração de computadores e dispositivos para compartilhamento de internet, arquivos e impressoras.
-</p>
-</div>
-
-<div class="card">
-<h3>Diagnóstico de Problemas</h3>
-<p>
-Identificação de lentidão, quedas de conexão, interferências e falhas na rede local ou internet.
-</p>
-</div>
-
-<div class="card">
-<h3>Otimização de Rede</h3>
-<p>
-Ajustes técnicos para melhorar desempenho geral da rede e reduzir instabilidade de conexão.
-</p>
-</div>
-
-<div class="card">
-<h3>Para quem é este serviço?</h3>
-<p>
-Indicado para residências, escritórios e empresas que dependem de internet estável para trabalhar e operar.
-</p>
-</div>
 
 </div>
 
 </div>
 
+<!-- ==================================================
+INFO
+================================================== -->
+
+<div class="info-box">
+
+<div class="info-title">
+ATENDIMENTO TÉCNICO
 </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
+<div class="info-text">
 
-<a class="nav-item" href="../index.html">
-<i class="fa-solid fa-house"></i>
-<span>Home</span>
+Realizamos suporte presencial e remoto
+para residências, empresas,
+escritórios e comércios.
+
+Atendimento rápido,
+organização profissional
+e soluções personalizadas
+para cada ambiente.
+
+</div>
+
+<a class="whatsapp-btn"
+href="https://wa.me/5511958733142"
+target="_blank">
+
+SOLICITAR ATENDIMENTO
+
 </a>
 
-<a class="nav-item" href="../index.html#services">
-<i class="fa-solid fa-grid-2"></i>
-<span>Serviços</span>
-</a>
+</div>
 
-<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
-<i class="fa-solid fa-phone"></i>
-<span>Contato</span>
-</a>
+</div>
 
-</nav>
-
-<script>
-
-/* MATRIX */
-
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
-
-function resize(){
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-}
-resize();
-
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-const fontSize=15;
-
-let columns=canvas.width/fontSize;
-let drops=[];
-
-function init(){
-columns=canvas.width/fontSize;
-drops=Array.from({length:columns},()=>1);
-}
-init();
-
-function draw(){
-
-ctx.fillStyle="rgba(0,0,0,0.04)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="#00ff41";
-ctx.font=fontSize+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text=chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize>canvas.height && Math.random()>0.97){
-drops[i]=0;
-}
-drops[i]+=0.75;
-}
-
-}
-
-setInterval(draw,45);
-
-window.addEventListener("resize",()=>{
-resize();
-init();
-});
-
-</script>
+</div>
 
 </body>
 </html>
