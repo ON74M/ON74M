@@ -1,285 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Redes & Wi-Fi</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
-rel="stylesheet">
+<!-- AUTO VOLTA PARA HOME -->
+<meta http-equiv="refresh" content="10; url=https://www.n74.com.br">
 
-<link href="https://fonts.cdnfonts.com/css/neuropol-2"
-rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
 <style>
 
-/* ==================================================
-RESET
-================================================== */
-
+/* RESET */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 font-family:'Ubuntu',sans-serif;
-font-weight:300;
+user-select:none;
 }
 
-/* ==================================================
-BODY
-================================================== */
-
-html,
-body{
+html,body{
 width:100%;
-min-height:100%;
-
-background:transparent;
-
-overflow-x:hidden;
-
+height:100%;
+background:#000;
+overflow:hidden;
 color:#00ff41;
 }
 
-/* ==================================================
-PAGE
-================================================== */
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
+}
 
-.page{
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
+}
+
+/* APP */
+.app{
 position:relative;
-
 z-index:2;
-
 width:100%;
-
-padding:
-18px
-14px
-90px;
+height:100dvh;
 }
 
-/* ==================================================
-CONTAINER
-================================================== */
-
-.container{
-width:100%;
-max-width:1000px;
-
-margin:auto;
-}
-
-/* ==================================================
-HEADER
-================================================== */
-
+/* HEADER */
 .header{
-margin-bottom:18px;
+text-align:center;
+padding:24px 12px 10px;
 }
-
-/* ==================================================
-TITLE
-================================================== */
 
 .title{
 font-family:'Neuropol',sans-serif;
-
-font-size:
-clamp(24px,6vw,42px);
-
+font-size:clamp(26px,5vw,42px);
 color:#00ff41;
-
-text-shadow:
-0 0 10px rgba(0,255,65,0.25);
+text-shadow:0 0 10px rgba(0,255,65,0.4);
 }
-
-/* ==================================================
-SUBTITLE
-================================================== */
 
 .subtitle{
-margin-top:8px;
-
-font-size:13px;
-
-line-height:1.6;
-
+font-size:12px;
 color:#b7ffcf;
+margin-top:6px;
+letter-spacing:2px;
 }
 
-/* ==================================================
-GRID
-================================================== */
-
-.grid{
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
+/* CONTENT */
+.container{
+display:flex;
+flex-direction:column;
 gap:12px;
+padding:12px;
+max-width:1000px;
+margin:0 auto;
 }
-
-/* ==================================================
-CARD
-================================================== */
 
 .card{
-background:
-rgba(0,0,0,0.82);
-
-border:
-1px solid rgba(0,255,65,0.12);
-
-border-radius:14px;
-
-padding:16px;
-
+background:rgba(0,0,0,0.85);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:12px;
+padding:14px;
+color:#b7ffcf;
 backdrop-filter:blur(4px);
-
-transition:0.2s ease;
 }
-
-/* ==================================================
-CARD ACTIVE
-================================================== */
-
-.card:active{
-transform:scale(0.985);
-}
-
-/* ==================================================
-CARD TITLE
-================================================== */
 
 .card h3{
-font-size:14px;
-
-margin-bottom:10px;
-
 color:#00ff41;
+font-size:13px;
+margin-bottom:6px;
+font-weight:400;
 }
-
-/* ==================================================
-CARD TEXT
-================================================== */
 
 .card p{
 font-size:12px;
-
-line-height:1.7;
-
-color:#c9ffd8;
+line-height:1.5;
 }
 
-/* ==================================================
-INFO BOX
-================================================== */
-
-.info-box{
-margin-top:18px;
-
-background:
-rgba(0,0,0,0.82);
-
-border:
-1px solid rgba(0,255,65,0.10);
-
-border-radius:14px;
-
-padding:18px;
+/* SIDE MENU */
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+transform:translateX(-100%);
+width:270px;
+height:100%;
+background:rgba(0,0,0,0.96);
+border-right:1px solid rgba(255,255,255,0.08);
+padding:22px 18px;
+z-index:99998;
+transition:0.25s ease;
+overflow-y:auto;
 }
 
-/* ==================================================
-INFO TITLE
-================================================== */
+.side-menu.active{
+transform:translateX(0);
+}
 
-.info-title{
-font-size:15px;
-
-margin-bottom:10px;
-
+.menu-title{
+font-family:'Neuropol',sans-serif;
+font-size:22px;
 color:#00ff41;
+margin-bottom:24px;
 }
 
-/* ==================================================
-INFO TEXT
-================================================== */
-
-.info-text{
-font-size:12px;
-
-line-height:1.8;
-
-color:#b7ffcf;
+.side-menu a{
+display:block;
+padding:13px 0;
+text-decoration:none;
+color:#ffffff;
+font-size:14px;
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* ==================================================
-WHATS BUTTON
-================================================== */
+.side-menu a:hover{
+color:#00ff41;
+padding-left:6px;
+}
 
-.whatsapp-btn{
+/* OVERLAY */
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(4px);
+z-index:99997;
+display:none;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+height:60px;
 display:flex;
+justify-content:space-around;
+align-items:center;
+background:rgba(0,0,0,0.92);
+border-top:1px solid rgba(255,255,255,0.08);
+z-index:99999;
+}
 
+.nav-item{
+flex:1;
+display:flex;
 align-items:center;
 justify-content:center;
-
-margin-top:18px;
-
-width:100%;
-height:52px;
-
-border-radius:14px;
-
 text-decoration:none;
+color:#ffffff;
+opacity:0.85;
+}
 
-background:
-rgba(0,255,65,0.08);
+.nav-item i{
+font-size:16px;
+}
 
-border:
-1px solid rgba(0,255,65,0.18);
-
+.nav-item:hover{
 color:#00ff41;
-
-font-size:13px;
-
-transition:0.2s ease;
-}
-
-/* ==================================================
-WHATS ACTIVE
-================================================== */
-
-.whatsapp-btn:active{
-transform:scale(0.98);
-
-opacity:0.8;
-}
-
-/* ==================================================
-RESPONSIVO
-================================================== */
-
-@media(max-width:700px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-}
-
-/* ==================================================
-SCROLLBAR
-================================================== */
-
-::-webkit-scrollbar{
-width:0;
-height:0;
+opacity:1;
 }
 
 </style>
@@ -288,141 +206,140 @@ height:0;
 
 <body>
 
-<!-- ==================================================
-PAGE
-================================================== -->
+<canvas id="matrix"></canvas>
 
-<div class="page">
+<div class="app">
+
+<div class="header">
+<div class="title">REDES & WI-FI</div>
+<div class="subtitle">Conectividade inteligente e estável</div>
+</div>
 
 <div class="container">
 
-<!-- ==================================================
-HEADER
-================================================== -->
-
-<div class="header">
-
-<div class="title">
-REDES & WI-FI
+<div class="card">
+<h3>O que fazemos?</h3>
+<p>Projetamos e otimizamos redes cabeadas e Wi-Fi para alta performance.</p>
 </div>
-
-<div class="subtitle">
-
-Estruturação, otimização e correção
-de redes residenciais e empresariais.
-
-</div>
-
-</div>
-
-<!-- ==================================================
-GRID
-================================================== -->
-
-<div class="grid">
-
-<!-- CARD -->
 
 <div class="card">
-
-<h3>
-CONFIGURAÇÃO DE ROTEADORES
-</h3>
-
-<p>
-Instalação, configuração avançada,
-troca de senha, atualização e otimização
-de roteadores Wi-Fi.
-</p>
-
+<h3>Problemas comuns</h3>
+<p>Internet lenta, quedas de conexão, sinal fraco e instabilidade de rede.</p>
 </div>
-
-<!-- CARD -->
 
 <div class="card">
-
-<h3>
-MELHORIA DE SINAL
-</h3>
-
-<p>
-Correção de áreas sem cobertura,
-internet lenta, quedas de conexão
-e interferências no Wi-Fi.
-</p>
-
+<h3>Nossa solução</h3>
+<p>Diagnóstico completo, reestruturação da rede e melhoria de cobertura Wi-Fi.</p>
 </div>
-
-<!-- CARD -->
 
 <div class="card">
-
-<h3>
-REDES EMPRESARIAIS
-</h3>
-
-<p>
-Estruturação de ambientes corporativos,
-switches, access points e organização
-da infraestrutura de rede.
-</p>
-
+<h3>Resultado</h3>
+<p>Rede rápida, estável e segura para casa ou empresa.</p>
 </div>
-
-<!-- CARD -->
-
-<div class="card">
-
-<h3>
-SEGURANÇA DA REDE
-</h3>
-
-<p>
-Proteção contra acessos indevidos,
-configuração segura da rede e
-segmentação de dispositivos.
-</p>
 
 </div>
 
 </div>
 
-<!-- ==================================================
-INFO
-================================================== -->
+<!-- MENU -->
+<div class="menu-overlay" id="menuOverlay"></div>
 
-<div class="info-box">
+<div class="side-menu" id="sideMenu">
 
-<div class="info-title">
-ATENDIMENTO TÉCNICO
-</div>
+<div class="menu-title">N74 TEC</div>
 
-<div class="info-text">
+<a href="suporte-tecnico.html">Suporte Técnico</a>
+<a href="redes-wifi.html">Redes & Wi-Fi</a>
+<a href="cftv.html">CFTV</a>
+<a href="servidores.html">Servidores</a>
+<a href="backup.html">Backup</a>
+<a href="suporte-remoto.html">Suporte Remoto</a>
+<a href="atendimento-avulso.html">Atendimento Avulso</a>
+<a href="contrato-manutencao.html">Contrato de Manutenção</a>
 
-Realizamos suporte presencial e remoto
-para residências, empresas,
-escritórios e comércios.
-
-Atendimento rápido,
-organização profissional
-e soluções personalizadas
-para cada ambiente.
+<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
 
 </div>
 
-<a class="whatsapp-btn"
-href="https://wa.me/5511958733142"
-target="_blank">
+<!-- NAV -->
+<nav class="bottom-nav">
 
-SOLICITAR ATENDIMENTO
-
+<a class="nav-item" href="#" id="menuButton">
+<i class="fa-solid fa-bars"></i>
 </a>
 
-</div>
+<a class="nav-item" href="index.html">
+<i class="fa-solid fa-house"></i>
+</a>
 
-</div>
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+</a>
 
-</div>
+</nav>
+
+<script>
+
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
+
+function resize(){
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+init();
+}
+
+function init(){
+columns = Math.floor(canvas.width / fontSize);
+drops = Array(columns).fill(1);
+}
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.04)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+drops[i]=0;
+}
+
+drops[i]+=0.75;
+}
+}
+
+setInterval(draw,45);
+window.addEventListener("resize", resize);
+resize();
+
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",()=>{
+sideMenu.classList.toggle("active");
+menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+sideMenu.classList.remove("active");
+menuOverlay.classList.remove("active");
+});
+
+</script>
 
 </body>
 </html>
