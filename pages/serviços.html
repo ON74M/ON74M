@@ -1,246 +1,215 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>N74 TEC | Serviços</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
-rel="stylesheet">
+<!-- AUTO VOLTA PARA HOME -->
+<meta http-equiv="refresh" content="10; url=https://www.n74.com.br">
 
-<link href="https://fonts.cdnfonts.com/css/neuropol-2"
-rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
 <style>
 
-/* ==================================================
-RESET
-================================================== */
-
+/* RESET */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 font-family:'Ubuntu',sans-serif;
-font-weight:300;
+user-select:none;
 }
 
-/* ==================================================
-BODY
-================================================== */
-
-html,
-body{
+html,body{
 width:100%;
-min-height:100%;
-
-background:transparent;
-
-overflow-x:hidden;
-
+height:100%;
+background:#000;
+overflow:hidden;
 color:#00ff41;
 }
 
-/* ==================================================
-PAGE
-================================================== */
+/* MATRIX */
+canvas{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:0;
+pointer-events:none;
+}
 
-.page{
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.72);
+z-index:1;
+}
+
+/* APP */
+.app{
 position:relative;
-
 z-index:2;
-
 width:100%;
-
-padding:
-20px
-16px
-40px;
+height:100dvh;
 }
 
-/* ==================================================
-CONTAINER
-================================================== */
-
-.container{
-width:100%;
-max-width:1200px;
-
-margin:auto;
-}
-
-/* ==================================================
-HEADER
-================================================== */
-
+/* HEADER */
 .header{
-margin-bottom:22px;
+text-align:center;
+padding:24px 12px 10px;
 }
-
-/* ==================================================
-TITLE
-================================================== */
 
 .title{
 font-family:'Neuropol',sans-serif;
-
-font-size:
-clamp(28px,6vw,52px);
-
+font-size:clamp(26px,5vw,42px);
 color:#00ff41;
-
-text-shadow:
-0 0 12px rgba(0,255,65,0.20);
+text-shadow:0 0 10px rgba(0,255,65,0.4);
 }
-
-/* ==================================================
-SUBTITLE
-================================================== */
 
 .subtitle{
-margin-top:10px;
-
-font-size:13px;
-
-line-height:1.8;
-
+font-size:12px;
 color:#b7ffcf;
-
-max-width:800px;
+margin-top:6px;
+letter-spacing:2px;
 }
 
-/* ==================================================
-GRID
-================================================== */
-
-.grid{
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
-gap:14px;
-}
-
-/* ==================================================
-CARD
-================================================== */
-
-.card{
+/* CONTENT */
+.container{
 display:flex;
 flex-direction:column;
-justify-content:space-between;
-
-min-height:180px;
-
-padding:18px;
-
-border-radius:18px;
-
-text-decoration:none;
-
-background:
-rgba(0,0,0,0.80);
-
-border:
-1px solid rgba(0,255,65,0.10);
-
-backdrop-filter:blur(5px);
-
-transition:
-transform 0.2s ease,
-border 0.2s ease,
-background 0.2s ease;
+gap:12px;
+padding:12px;
+max-width:1000px;
+margin:0 auto;
 }
 
-/* ==================================================
-CARD ACTIVE
-================================================== */
-
-.card:active{
-transform:scale(0.985);
-}
-
-/* ==================================================
-CARD HOVER
-================================================== */
-
-.card:hover{
-border:
-1px solid rgba(0,255,65,0.20);
-
-background:
-rgba(0,0,0,0.88);
-}
-
-/* ==================================================
-CARD TITLE
-================================================== */
-
-.card-title{
-font-size:15px;
-
-color:#00ff41;
-
-margin-bottom:12px;
-}
-
-/* ==================================================
-CARD TEXT
-================================================== */
-
-.card-text{
-font-size:12px;
-
-line-height:1.8;
-
-color:#c7ffd8;
-}
-
-/* ==================================================
-CARD FOOTER
-================================================== */
-
-.card-footer{
-margin-top:18px;
-
-font-size:11px;
-
-letter-spacing:1px;
-
-color:#00ff41;
-
-opacity:0.75;
-}
-
-/* ==================================================
-RESPONSIVO
-================================================== */
-
-@media(max-width:760px){
-
+/* GRID CARDS */
 .grid{
-grid-template-columns:1fr;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
 .card{
-min-height:auto;
+background:rgba(0,0,0,0.85);
+border:1px solid rgba(0,255,65,0.15);
+border-radius:12px;
+padding:14px;
+color:#b7ffcf;
+text-decoration:none;
+transition:0.2s ease;
 }
 
+.card:hover{
+transform:scale(1.02);
+border-color:#00ff41;
 }
 
-/* ==================================================
-SCROLLBAR
-================================================== */
+.card h3{
+color:#00ff41;
+font-size:13px;
+margin-bottom:6px;
+}
 
-::-webkit-scrollbar{
-width:0;
-height:0;
+.card p{
+font-size:11px;
+line-height:1.4;
+}
+
+/* SIDE MENU */
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+transform:translateX(-100%);
+width:270px;
+height:100%;
+background:rgba(0,0,0,0.96);
+border-right:1px solid rgba(255,255,255,0.08);
+padding:22px 18px;
+z-index:99998;
+transition:0.25s ease;
+overflow-y:auto;
+}
+
+.side-menu.active{
+transform:translateX(0);
+}
+
+.menu-title{
+font-family:'Neuropol',sans-serif;
+font-size:22px;
+color:#00ff41;
+margin-bottom:24px;
+}
+
+.side-menu a{
+display:block;
+padding:13px 0;
+text-decoration:none;
+color:#ffffff;
+font-size:14px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.side-menu a:hover{
+color:#00ff41;
+padding-left:6px;
+}
+
+/* OVERLAY */
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(4px);
+z-index:99997;
+display:none;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+height:60px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+background:rgba(0,0,0,0.92);
+border-top:1px solid rgba(255,255,255,0.08);
+z-index:99999;
+}
+
+.nav-item{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:#ffffff;
+opacity:0.85;
+}
+
+.nav-item i{
+font-size:16px;
+}
+
+.nav-item:hover{
+color:#00ff41;
+opacity:1;
 }
 
 </style>
@@ -249,281 +218,57 @@ height:0;
 
 <body>
 
-<!-- ==================================================
-PAGE
-================================================== -->
+<canvas id="matrix"></canvas>
 
-<div class="page">
+<div class="app">
+
+<div class="header">
+<div class="title">SERVIÇOS</div>
+<div class="subtitle">Escolha uma solução N74 TEC</div>
+</div>
 
 <div class="container">
 
-<!-- ==================================================
-HEADER
-================================================== -->
-
-<div class="header">
-
-<div class="title">
-SERVIÇOS
-</div>
-
-<div class="subtitle">
-
-Conheça as soluções da N74 TEC
-para residências,
-empresas,
-escritórios,
-lojas
-e ambientes corporativos.
-
-</div>
-
-</div>
-
-<!-- ==================================================
-GRID
-================================================== -->
-
 <div class="grid">
 
-<!-- ==================================================
-SUPORTE
-================================================== -->
-
-<a class="card"
-href="/pages/suporte-tecnico.html">
-
-<div>
-
-<div class="card-title">
-SUPORTE TÉCNICO
-</div>
-
-<div class="card-text">
-
-Correção de problemas,
-lentidão,
-erros de sistema,
-instalação de programas
-e manutenção geral.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="suporte-tecnico.html">
+<h3>Suporte Técnico</h3>
+<p>Manutenção e suporte completo em TI.</p>
 </a>
 
-<!-- ==================================================
-REDES
-================================================== -->
-
-<a class="card"
-href="/pages/redes-wifi.html">
-
-<div>
-
-<div class="card-title">
-REDES & WI-FI
-</div>
-
-<div class="card-text">
-
-Melhoria de sinal,
-estruturação de redes,
-roteadores,
-Wi-Fi empresarial
-e estabilidade da conexão.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="redes-wifi.html">
+<h3>Redes & Wi-Fi</h3>
+<p>Internet rápida e estável.</p>
 </a>
 
-<!-- ==================================================
-SERVIDORES
-================================================== -->
-
-<a class="card"
-href="/pages/servidores.html">
-
-<div>
-
-<div class="card-title">
-SERVIDORES
-</div>
-
-<div class="card-text">
-
-Organização de ambientes corporativos,
-infraestrutura,
-arquivos compartilhados
-e estrutura de rede empresarial.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="cftv.html">
+<h3>CFTV</h3>
+<p>Segurança com câmeras inteligentes.</p>
 </a>
 
-<!-- ==================================================
-CFTV
-================================================== -->
-
-<a class="card"
-href="/pages/cftv.html">
-
-<div>
-
-<div class="card-title">
-CFTV
-</div>
-
-<div class="card-text">
-
-Instalação e configuração
-de câmeras de segurança,
-monitoramento remoto
-e proteção do ambiente.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="servidores.html">
+<h3>Servidores</h3>
+<p>Infraestrutura e cloud.</p>
 </a>
 
-<!-- ==================================================
-BACKUP
-================================================== -->
-
-<a class="card"
-href="/pages/backup.html">
-
-<div>
-
-<div class="card-title">
-BACKUP
-</div>
-
-<div class="card-text">
-
-Proteção de arquivos importantes,
-backup local,
-backup em nuvem
-e recuperação de dados.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="backup.html">
+<h3>Backup</h3>
+<p>Proteção total de dados.</p>
 </a>
 
-<!-- ==================================================
-REMOTO
-================================================== -->
-
-<a class="card"
-href="/pages/suporte-remoto.html">
-
-<div>
-
-<div class="card-title">
-SUPORTE REMOTO
-</div>
-
-<div class="card-text">
-
-Atendimento técnico rápido
-sem necessidade
-de visita presencial.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="suporte-remoto.html">
+<h3>Suporte Remoto</h3>
+<p>Atendimento imediato online.</p>
 </a>
 
-<!-- ==================================================
-AVULSO
-================================================== -->
-
-<a class="card"
-href="/pages/atendimento-avulso.html">
-
-<div>
-
-<div class="card-title">
-ATENDIMENTO AVULSO
-</div>
-
-<div class="card-text">
-
-Suporte pontual
-para resolver problemas específicos
-sem mensalidade.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="atendimento-avulso.html">
+<h3>Atendimento Avulso</h3>
+<p>Suporte sem contrato.</p>
 </a>
 
-<!-- ==================================================
-CONTRATO
-================================================== -->
-
-<a class="card"
-href="/pages/contrato-manutencao.html">
-
-<div>
-
-<div class="card-title">
-CONTRATO DE MANUTENÇÃO
-</div>
-
-<div class="card-text">
-
-Suporte contínuo,
-monitoramento,
-prevenção
-e acompanhamento técnico.
-
-</div>
-
-</div>
-
-<div class="card-footer">
-ABRIR SERVIÇO
-</div>
-
+<a class="card" href="contrato-manutencao.html">
+<h3>Contrato</h3>
+<p>Manutenção contínua mensal.</p>
 </a>
 
 </div>
@@ -531,6 +276,106 @@ ABRIR SERVIÇO
 </div>
 
 </div>
+
+<!-- MENU -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="side-menu" id="sideMenu">
+
+<div class="menu-title">N74 TEC</div>
+
+<a href="suporte-tecnico.html">Suporte Técnico</a>
+<a href="redes-wifi.html">Redes & Wi-Fi</a>
+<a href="cftv.html">CFTV</a>
+<a href="servidores.html">Servidores</a>
+<a href="backup.html">Backup</a>
+<a href="suporte-remoto.html">Suporte Remoto</a>
+<a href="atendimento-avulso.html">Atendimento Avulso</a>
+<a href="contrato-manutencao.html">Contrato de Manutenção</a>
+
+<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
+
+</div>
+
+<!-- NAV -->
+<nav class="bottom-nav">
+
+<a class="nav-item" href="#" id="menuButton">
+<i class="fa-solid fa-bars"></i>
+</a>
+
+<a class="nav-item" href="index.html">
+<i class="fa-solid fa-house"></i>
+</a>
+
+<a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
+<i class="fa-solid fa-phone"></i>
+</a>
+
+</nav>
+
+<script>
+
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
+
+function resize(){
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+init();
+}
+
+function init(){
+columns = Math.floor(canvas.width / fontSize);
+drops = Array(columns).fill(1);
+}
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.04)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+drops[i]=0;
+}
+
+drops[i]+=0.75;
+}
+}
+
+setInterval(draw,45);
+window.addEventListener("resize", resize);
+resize();
+
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",()=>{
+sideMenu.classList.toggle("active");
+menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+sideMenu.classList.remove("active");
+menuOverlay.classList.remove("active");
+});
+
+</script>
 
 </body>
 </html>
