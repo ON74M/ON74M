@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,38 +8,33 @@
 
 <title>N74 TEC | Contrato de Manutenção</title>
 
+<!-- AUTO VOLTA PARA HOME -->
+<meta http-equiv="refresh" content="30; url=https://www.n74.com.br">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/neuropol-2" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 
-/* ================= RESET ================= */
-
+/* RESET */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Ubuntu', sans-serif;
-font-weight:300;
+font-family:'Ubuntu',sans-serif;
+user-select:none;
 }
 
 html,body{
 width:100%;
-min-height:100%;
+height:100%;
 background:#000;
+overflow:hidden;
 color:#00ff41;
-
-overflow-x:hidden;
-overflow-y:auto;
--webkit-overflow-scrolling:touch;
-
-padding-bottom:80px;
 }
 
-/* ================= MATRIX ================= */
-
+/* MATRIX */
 canvas{
 position:fixed;
 inset:0;
@@ -56,139 +52,152 @@ background:rgba(0,0,0,0.72);
 z-index:1;
 }
 
-/* ================= CONTAINER ================= */
-
-.container{
+/* APP */
+.app{
 position:relative;
 z-index:2;
 width:100%;
-min-height:100dvh;
-
-display:flex;
-justify-content:center;
-align-items:flex-start;
-
-padding:12px;
+height:100dvh;
 }
 
-/* ================= PANEL ================= */
-
-.panel{
-width:100%;
-max-width:1100px;
-
-background:rgba(0,0,0,0.45);
-border:1px solid rgba(0,255,65,0.15);
-border-radius:16px;
-
-padding:12px;
-
-display:flex;
-flex-direction:column;
-}
-
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header{
 text-align:center;
-margin-top:6px;
+padding:24px 12px 10px;
 }
 
 .title{
-font-family:'Neuropol', sans-serif;
-font-size:clamp(24px, 5.5vw, 44px);
+font-family:'Neuropol',sans-serif;
+font-size:clamp(26px,5vw,42px);
 color:#00ff41;
-text-shadow:0 0 10px #00ff41;
+text-shadow:0 0 10px rgba(0,255,65,0.4);
 }
 
 .subtitle{
 font-size:12px;
-color:#00cc33;
-margin-top:4px;
+color:#b7ffcf;
+margin-top:6px;
+letter-spacing:2px;
 }
 
-/* ================= CONTENT ================= */
-
-.content{
+/* CONTENT */
+.container{
 display:flex;
 flex-direction:column;
-gap:10px;
-margin-top:14px;
+gap:12px;
+padding:12px;
+max-width:1000px;
+margin:0 auto;
 }
 
-/* ================= CARD ================= */
-
 .card{
-background:rgba(0,0,0,0.88);
-border:1px solid rgba(0,255,65,0.18);
+background:rgba(0,0,0,0.85);
+border:1px solid rgba(0,255,65,0.15);
 border-radius:12px;
-
-padding:12px;
-
+padding:14px;
 color:#b7ffcf;
+backdrop-filter:blur(4px);
 }
 
 .card h3{
 color:#00ff41;
-font-size:12px;
-font-weight:300;
+font-size:13px;
 margin-bottom:6px;
+font-weight:400;
 }
 
 .card p{
-font-size:11px;
+font-size:12px;
 line-height:1.5;
 }
 
-/* ================= BOTTOM NAV ================= */
+/* SIDE MENU */
+.side-menu{
+position:fixed;
+top:0;
+left:0;
+transform:translateX(-100%);
+width:270px;
+height:100%;
+background:rgba(0,0,0,0.96);
+border-right:1px solid rgba(255,255,255,0.08);
+padding:22px 18px;
+z-index:99998;
+transition:0.25s ease;
+overflow-y:auto;
+}
 
+.side-menu.active{
+transform:translateX(0);
+}
+
+.menu-title{
+font-family:'Neuropol',sans-serif;
+font-size:22px;
+color:#00ff41;
+margin-bottom:24px;
+}
+
+.side-menu a{
+display:block;
+padding:13px 0;
+text-decoration:none;
+color:#ffffff;
+font-size:14px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.side-menu a:hover{
+color:#00ff41;
+padding-left:6px;
+}
+
+/* OVERLAY */
+.menu-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(4px);
+z-index:99997;
+display:none;
+}
+
+.menu-overlay.active{
+display:block;
+}
+
+/* BOTTOM NAV */
 .bottom-nav{
 position:fixed;
-bottom:0;
 left:0;
+bottom:0;
 width:100%;
-
+height:60px;
 display:flex;
 justify-content:space-around;
 align-items:center;
-
-background:rgba(0,0,0,0.88);
-backdrop-filter: blur(10px);
-
-border-top:1px solid rgba(0,255,65,0.2);
-
-padding:10px 0;
-
-z-index:9999;
+background:rgba(0,0,0,0.92);
+border-top:1px solid rgba(255,255,255,0.08);
+z-index:99999;
 }
 
 .nav-item{
+flex:1;
 display:flex;
-flex-direction:column;
 align-items:center;
-
+justify-content:center;
 text-decoration:none;
-color:#00ff41;
-
-font-size:10px;
-gap:4px;
+color:#ffffff;
+opacity:0.85;
 }
 
 .nav-item i{
-font-size:18px;
+font-size:16px;
 }
 
-.nav-item:active{
-transform:scale(0.95);
-opacity:0.7;
-}
-
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:480px){
-.card p{
-font-size:10.5px;
-}
+.nav-item:hover{
+color:#00ff41;
+opacity:1;
 }
 
 </style>
@@ -199,99 +208,73 @@ font-size:10.5px;
 
 <canvas id="matrix"></canvas>
 
-<div class="container">
+<div class="app">
 
-<div class="panel">
-
-<!-- HEADER -->
 <div class="header">
 <div class="title">CONTRATO DE MANUTENÇÃO</div>
-<div class="subtitle">N74 TEC | Soluções em TI</div>
+<div class="subtitle">Suporte contínuo e preventivo</div>
 </div>
 
-<!-- CONTENT -->
-<div class="content">
+<div class="container">
 
 <div class="card">
-<h3>O que é o Contrato de Manutenção?</h3>
-<p>
-Serviço contínuo de suporte técnico para empresas e usuários que precisam de atendimento constante,
-prioridade e acompanhamento preventivo dos sistemas.
-</p>
+<h3>O que é?</h3>
+<p>Serviço mensal de suporte contínuo para empresas e residências com prioridade de atendimento.</p>
 </div>
 
 <div class="card">
-<h3>Como funciona?</h3>
-<p>
-O cliente possui suporte recorrente com atendimento prioritário para resolver problemas rapidamente
-antes que eles impactem o negócio.
-</p>
+<h3>O que inclui?</h3>
+<p>Manutenção preventiva, suporte remoto, ajustes de rede, servidores e sistemas.</p>
 </div>
 
 <div class="card">
-<h3>Benefícios do contrato</h3>
-<p>
-Redução de falhas, suporte mais rápido, manutenção preventiva e acompanhamento contínuo do ambiente de TI.
-</p>
+<h3>Vantagens</h3>
+<p>Atendimento rápido, custo fixo mensal e suporte ilimitado dentro do contrato.</p>
 </div>
 
 <div class="card">
-<h3>Suporte prioritário</h3>
-<p>
-Clientes com contrato têm atendimento preferencial em relação a chamados avulsos.
-</p>
-</div>
-
-<div class="card">
-<h3>Manutenção preventiva</h3>
-<p>
-Análise periódica de sistemas, redes e equipamentos para evitar falhas antes que aconteçam.
-</p>
-</div>
-
-<div class="card">
-<h3>O que está incluso?</h3>
-<p>
-Suporte remoto, suporte técnico, ajustes de sistema, correções, monitoramento básico e orientação técnica.
-</p>
-</div>
-
-<div class="card">
-<h3>Para quem é este serviço?</h3>
-<p>
-Indicado para empresas que não podem parar e precisam de estabilidade total na infraestrutura de TI.
-</p>
-</div>
-
-<div class="card">
-<h3>Valor estratégico</h3>
-<p>
-O contrato reduz custos com emergências e aumenta a eficiência operacional da empresa.
-</p>
+<h3>Ideal para quem?</h3>
+<p>Empresas que dependem de TI funcionando sem interrupções.</p>
 </div>
 
 </div>
 
 </div>
 
+<!-- MENU -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="side-menu" id="sideMenu">
+
+<div class="menu-title">N74 TEC</div>
+
+<a href="suporte-tecnico.html">Suporte Técnico</a>
+<a href="redes-wifi.html">Redes & Wi-Fi</a>
+<a href="cftv.html">CFTV</a>
+<a href="servidores.html">Servidores</a>
+<a href="backup.html">Backup</a>
+<a href="suporte-remoto.html">Suporte Remoto</a>
+<a href="atendimento-avulso.html">Atendimento Avulso</a>
+<a href="contrato-manutencao.html">Contrato de Manutenção</a>
+
+<a href="https://www.instagram.com/n74tec/" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/company/n74-tec" target="_blank">LinkedIn</a>
+
 </div>
 
-<!-- BOTTOM NAV -->
+<!-- NAV -->
 <nav class="bottom-nav">
 
-<a class="nav-item" href="../index.html">
-<i class="fa-solid fa-house"></i>
-<span>Home</span>
+<a class="nav-item" href="#" id="menuButton">
+<i class="fa-solid fa-bars"></i>
 </a>
 
-<a class="nav-item" href="../index.html#services">
-<i class="fa-solid fa-grid-2"></i>
-<span>Serviços</span>
+<a class="nav-item" href="index.html">
+<i class="fa-solid fa-house"></i>
 </a>
 
 <a class="nav-item" href="https://wa.me/5511958733142" target="_blank">
 <i class="fa-solid fa-phone"></i>
-<span>Contato</span>
 </a>
 
 </nav>
@@ -299,53 +282,61 @@ O contrato reduz custos com emergências e aumenta a eficiência operacional da 
 <script>
 
 /* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+let fontSize = 15;
+let chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
+let columns;
+let drops = [];
 
 function resize(){
-canvas.width=innerWidth;
-canvas.height=innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+init();
 }
-resize();
-
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&";
-const fontSize=15;
-
-let columns=canvas.width/fontSize;
-let drops=[];
 
 function init(){
-columns=canvas.width/fontSize;
-drops=Array.from({length:columns},()=>1);
+columns = Math.floor(canvas.width / fontSize);
+drops = Array(columns).fill(1);
 }
-init();
 
 function draw(){
-
-ctx.fillStyle="rgba(0,0,0,0.04)";
+ctx.fillStyle = "rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle="#00ff41";
-ctx.font=fontSize+"px monospace";
+ctx.fillStyle = "#00ff41";
+ctx.font = fontSize + "px monospace";
 
 for(let i=0;i<drops.length;i++){
-let text=chars[Math.floor(Math.random()*chars.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+let text = chars[Math.floor(Math.random()*chars.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.97){
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
 drops[i]=0;
 }
+
 drops[i]+=0.75;
 }
-
 }
 
 setInterval(draw,45);
-
-window.addEventListener("resize",()=>{
+window.addEventListener("resize", resize);
 resize();
-init();
+
+/* MENU */
+const menuButton = document.getElementById("menuButton");
+const sideMenu = document.getElementById("sideMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+menuButton.addEventListener("click",()=>{
+sideMenu.classList.toggle("active");
+menuOverlay.classList.toggle("active");
+});
+
+menuOverlay.addEventListener("click",()=>{
+sideMenu.classList.remove("active");
+menuOverlay.classList.remove("active");
 });
 
 </script>
