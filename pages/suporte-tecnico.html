@@ -8,8 +8,7 @@
 
 <title>N74 TEC | Suporte Técnico</title>
 
-<!-- AUTO VOLTA PARA HOME -->
-<meta http-equiv="refresh" content="30; url=https://www.n74.com.br">
+<meta http-equiv="refresh" content="60; url=https://www.n74.com.br">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
@@ -23,18 +22,19 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Ubuntu',sans-serif;
-user-select:none;
 }
 
+/* SCROLL CORRIGIDO */
 html,body{
 width:100%;
-height:100%;
+min-height:100%;
+overflow-x:hidden;
+overflow-y:auto;
 background:#000;
-overflow:hidden;
 color:#00ff41;
 }
 
-/* MATRIX */
+/* MATRIX FIXA */
 canvas{
 position:fixed;
 inset:0;
@@ -44,6 +44,7 @@ z-index:0;
 pointer-events:none;
 }
 
+/* FUNDO ESCURO */
 body::before{
 content:"";
 position:fixed;
@@ -56,8 +57,8 @@ z-index:1;
 .app{
 position:relative;
 z-index:2;
-width:100%;
-height:100dvh;
+min-height:100vh;
+padding-bottom:90px;
 }
 
 /* HEADER */
@@ -70,7 +71,7 @@ padding:24px 12px 10px;
 font-family:'Neuropol',sans-serif;
 font-size:clamp(26px,5vw,42px);
 color:#00ff41;
-text-shadow:0 0 10px rgba(0,255,65,0.4);
+text-shadow:0 0 12px rgba(0,255,65,0.5);
 }
 
 .subtitle{
@@ -90,13 +91,13 @@ max-width:1000px;
 margin:0 auto;
 }
 
+/* CARD */
 .card{
-background:rgba(0,0,0,0.85);
+background:rgba(0,0,0,0.88);
 border:1px solid rgba(0,255,65,0.15);
 border-radius:12px;
 padding:14px;
 color:#b7ffcf;
-backdrop-filter:blur(4px);
 }
 
 .card h3{
@@ -111,7 +112,7 @@ font-size:12px;
 line-height:1.5;
 }
 
-/* SIDE MENU */
+/* MENU LATERAL */
 .side-menu{
 position:fixed;
 top:0;
@@ -166,7 +167,7 @@ display:none;
 display:block;
 }
 
-/* BOTTOM NAV */
+/* NAV BAR */
 .bottom-nav{
 position:fixed;
 left:0;
@@ -206,35 +207,51 @@ opacity:1;
 
 <body>
 
+<!-- MATRIX -->
 <canvas id="matrix"></canvas>
 
 <div class="app">
 
 <div class="header">
 <div class="title">SUPORTE TÉCNICO</div>
-<div class="subtitle">Diagnóstico e resolução profissional</div>
+<div class="subtitle">N1 • N2 • N3 | Hardware + Software + Redes</div>
 </div>
 
 <div class="container">
 
 <div class="card">
-<h3>O que fazemos?</h3>
-<p>Correção de problemas em computadores, redes, servidores e sistemas em geral.</p>
+<h3>NÍVEL N1 — Atendimento Básico</h3>
+<p>
+Suporte inicial para problemas comuns: instalação de programas, configuração de impressoras, ajustes no Windows e erros simples de sistema.
+</p>
 </div>
 
 <div class="card">
-<h3>Atendimento</h3>
-<p>Presencial ou remoto, conforme necessidade do cliente.</p>
+<h3>NÍVEL N2 — Infraestrutura</h3>
+<p>
+Configuração de redes, Wi-Fi, diagnóstico de lentidão, backups, e correções em ambientes corporativos e domésticos.
+</p>
 </div>
 
 <div class="card">
-<h3>Problemas comuns</h3>
-<p>Lentidão, vírus, falhas de sistema, internet, configurações e segurança.</p>
+<h3>NÍVEL N3 — Engenharia de TI</h3>
+<p>
+Servidores, virtualização, cloud, firewall, segurança avançada e recuperação de sistemas críticos.
+</p>
 </div>
 
 <div class="card">
-<h3>Objetivo</h3>
-<p>Restaurar o funcionamento ideal do seu ambiente de TI com rapidez e eficiência.</p>
+<h3>HARDWARE</h3>
+<p>
+Instalação e configuração de PCs, upgrades (SSD, RAM), montagem de máquinas e configuração de roteadores e switches.
+</p>
+</div>
+
+<div class="card">
+<h3>DIAGNÓSTICO COMPLETO</h3>
+<p>
+Análise de falhas em hardware, software e rede com solução rápida e precisa.
+</p>
 </div>
 
 </div>
