@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ativo Comercial 642m² - Localização Premium</title>
+<title>Ativo Comercial 642m²</title>
 
 <style>
 @import url('https://fonts.cdnfonts.com/css/neuropol');
@@ -13,15 +12,24 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#fffdfb;
 }
 
 /* 🌆 HERO */
 .hero{
-  height:85vh;
+  min-height:85vh;
   background:
-    linear-gradient(180deg, rgba(60,30,10,0.60), rgba(20,10,5,0.85)),
-    url("https://s2-valor.glbimg.com/fKbRjcZJPcQ1BVNwqpCwBgs94vg=/0x0:5461x3067/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2026/j/W/8CyAJUSBGqTxgdalEB4Q/gettyimages-1419903977.jpg");
+    linear-gradient(
+      180deg,
+      rgba(40,20,5,0.25),
+      rgba(25,12,5,0.45)
+    ),
+    url("https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=1600&h=900&pitch=7.269171874755372&panoid=5AIvFxXBC1sT2PQgQbxQlg&yaw=50.9922295060732");
+
   background-size:cover;
   background-position:center;
   display:flex;
@@ -30,39 +38,52 @@
   align-items:center;
   text-align:center;
   color:#fff;
-  padding:40px 16px;
+  padding:40px 18px;
+  position:relative;
 }
 
-/* 🔥 TÍTULO NEUROPOL */
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:120px;
+  background:linear-gradient(to top,#fffdfb,transparent);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1000px;
+}
+
 .hero h1{
-  font-family: 'Neuropol', Arial, sans-serif;
-  font-size: clamp(22px, 6vw, 52px);
-  font-weight:700;
+  font-family:'Neuropol', Arial, sans-serif;
+  font-size:clamp(24px,6vw,56px);
   line-height:1.1;
-  max-width:95%;
-  word-break:break-word;
-  overflow-wrap:anywhere;
-  text-shadow:0 4px 20px rgba(0,0,0,0.5);
+  text-shadow:0 4px 15px rgba(0,0,0,0.35);
+  margin-bottom:20px;
 }
 
 .hero p{
-  max-width:900px;
-  margin-top:15px;
-  font-size: clamp(14px, 2.5vw, 18px);
-  line-height:1.7;
-  color:#f5efe6;
+  font-size:clamp(15px,2.5vw,20px);
+  line-height:1.8;
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,0.30);
 }
 
-/* SELO */
+/* 📄 SELO */
 .seal{
-  text-align:center;
+  max-width:1100px;
+  margin:30px auto 0;
   background:#2b1a12;
   color:#f2e6d9;
   padding:14px;
-  margin:30px auto 10px;
-  max-width:1100px;
-  border-radius:10px;
+  border-radius:12px;
+  text-align:center;
   font-weight:700;
+  letter-spacing:1px;
 }
 
 /* CONTAINER */
@@ -72,63 +93,82 @@
   padding:50px 20px;
 }
 
-/* TITULOS */
+/* TITLES */
 h2{
   color:#2b1a12;
-  margin:30px 0 15px;
-  border-left:4px solid #a8743a;
-  padding-left:12px;
-  font-size: clamp(18px, 3vw, 22px);
+  margin:35px 0 18px;
+  border-left:5px solid #a8743a;
+  padding-left:14px;
+  font-size:clamp(20px,3vw,26px);
   font-weight:800;
 }
 
-/* TEXTO */
 p{
-  line-height:1.8;
-  color:#3a2a22;
-  font-size: clamp(14px, 2.2vw, 16px);
+  color:#3d2b1f;
+  line-height:1.9;
+  font-size:clamp(14px,2.2vw,16px);
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;
 }
 
 /* CARD */
 .card{
   background:#fffaf5;
   border:1px solid #ead9c9;
-  padding:22px;
-  border-radius:14px;
+  border-radius:16px;
+  padding:24px;
+  transition:0.3s ease;
 }
 
-/* PREÇO */
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  color:#2b1a12;
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+/* COMERCIAL */
 .price{
-  background:#fffaf5;
-  border-left:4px solid #a8743a;
-  padding:22px;
-  border-radius:12px;
+  background:linear-gradient(135deg,#fff7ef,#fffaf5);
+  border:2px solid #d8b184;
+  border-radius:18px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.05);
+}
+
+.price p{
+  font-size:clamp(16px,2.4vw,18px);
+  color:#4b3525;
+  font-weight:600;
 }
 
 /* CONTATO */
 .contact{
   background:#fbf6f1;
-  padding:22px;
-  border-radius:12px;
-  margin-top:20px;
   border:1px solid #ead9c9;
+  border-radius:16px;
+  padding:24px;
 }
 
 /* BOTÕES */
 .btn{
   display:inline-block;
-  margin:10px;
+  margin:10px 10px 0 0;
   padding:14px 28px;
-  border-radius:10px;
+  border-radius:12px;
   font-weight:700;
   text-decoration:none;
+  transition:0.3s ease;
 }
 
 .btn-primary{
@@ -136,8 +176,12 @@ p{
   color:#fff;
 }
 
+.btn-primary:hover{
+  background:#8b652f;
+}
+
 .btn-outline{
-  border:1px solid #a8743a;
+  border:2px solid #a8743a;
   color:#a8743a;
 }
 
@@ -148,18 +192,35 @@ p{
 
 /* FOOTER */
 footer{
-  text-align:center;
-  padding:40px;
-  color:#7a665a;
   border-top:1px solid #ead9c9;
   margin-top:40px;
-  font-size:14px;
+  padding:20px 12px;
+  text-align:center;
+  font-size:clamp(11px,2vw,13px);
+  color:#7a665a;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 footer a{
   color:#a8743a;
   text-decoration:none;
   font-weight:700;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .hero{
+    min-height:75vh;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
 }
 </style>
 </head>
@@ -169,108 +230,216 @@ footer a{
 <!-- 🌆 HERO -->
 <div class="hero">
 
-  <h1>🏢 Ativo Comercial 642 m²</h1>
+  <div class="hero-content">
 
-  <p>
-    Localização estratégica com forte potencial de valorização e alta demanda para uso comercial e locação. 💰📈
-  </p>
+    <h1>🏢 Ativo Comercial 642 m²</h1>
+
+    <p>
+      Estrutura robusta, localização estratégica,
+      energia trifásica e elevado potencial para operação empresarial,
+      valorização patrimonial e geração de renda imobiliária. 📈
+    </p>
+
+  </div>
 
 </div>
 
-<!-- SELO -->
+<!-- 📄 SELO -->
 <div class="seal">
-  📄 MEMORIAL DESCRITIVO OFICIAL — PADRÃO EXECUTIVO PREMIUM
+  📄 MEMORIAL DESCRITIVO OFICIAL
 </div>
 
 <div class="container">
 
+<!-- 📍 LOCALIZAÇÃO -->
 <h2>📍 Localização Estratégica</h2>
 
 <p>
 📍 <strong>Av. Deputado Cantídio Sampaio, 388 – Vila Nova Cachoeirinha, São Paulo</strong>
 <br><br>
 
-Região consolidada, com forte vocação comercial, alta circulação de pessoas e infraestrutura completa.
-Conectividade direta com mobilidade urbana e eixos estratégicos da zona norte. 🚇
+Imóvel localizado em um dos principais corredores comerciais da zona norte,
+em região consolidada, com forte circulação urbana,
+atividade econômica ativa e infraestrutura completa. 📈
 <br><br>
 
-<strong>⏱️ Proximidades estratégicas:</strong><br><br>
-
-🚏 Terminal Vila Nova Cachoeirinha – 5 min<br>
-🏋️ Academia (rede Smart Fit e locais) – 2 a 5 min<br>
-🛒 Supermercados (Sonda, Assaí e regionais) – 3 a 6 min<br>
-⛽ Postos de gasolina – 1 a 3 min<br>
-🏦 Bancos (Itaú, Bradesco, Caixa, Santander) – 3 a 7 min<br>
-💊 Farmácias (Droga Raia, Drogasil e locais) – 2 a 5 min<br>
-<br>
-
-A região garante fluxo constante de pessoas, alta liquidez comercial e excelente ocupação para diferentes tipos de negócio.
+A localização oferece acesso rápido para Santana,
+Barra Funda, Marginais, Casa Verde,
+Freguesia do Ó e regiões centrais,
+além de integração com corredores estruturais de ônibus
+e mobilidade metropolitana. 🚇
 <br><br>
 
-Conexão direta com Barra Funda, Santana e futura expansão da Freguesia do Ó, posicionando o imóvel em um dos principais eixos de valorização da cidade. 📈
+A poucos minutos do Terminal Vila Nova Cachoeirinha,
+importante polo de integração da zona norte,
+com conexões estratégicas para diversas regiões da capital
+e impacto positivo esperado pela futura expansão metroviária
+na direção da Freguesia do Ó. 🚉
+<br><br>
+
+O entorno imediato possui forte presença de supermercados,
+atacadistas, academias, bancos,
+farmácias, restaurantes,
+postos de combustível e centros comerciais,
+fortalecendo o fluxo diário de pessoas
+e a atratividade comercial do ativo. 💼
+<br><br>
+
+<strong>⏱️ Principais proximidades:</strong>
+<br><br>
+
+🚏 Terminal Vila Nova Cachoeirinha — aproximadamente 5 minutos<br>
+🚇 Integração com Santana e Barra Funda<br>
+🚌 Corredores de ônibus e mobilidade urbana<br>
+🏋️ Academias e centros fitness — 2 a 5 minutos<br>
+🛒 Supermercados e atacadistas — 3 a 6 minutos<br>
+⛽ Postos de combustível — 1 a 3 minutos<br>
+🏦 Bancos e serviços financeiros — 3 a 7 minutos<br>
+💊 Farmácias e conveniências — 2 a 5 minutos<br>
+🍽️ Restaurantes e serviços gastronômicos — fluxo ativo diário
 </p>
 
+<!-- 🏢 DISTRIBUIÇÃO -->
+<h2>🏢 Distribuição do Imóvel</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>🚗 Nível da Rua / Térreo</h3>
+    <p>
+      Pavimento no nível da avenida com garagem para até 2 veículos.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>⬇️ Subsolo</h3>
+    <p>
+      Rampa em concreto armado com entrada de veículos.
+      Espaço amplo para garagem, estoque ou operação.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>🏢 1º Andar</h3>
+    <p>
+      Pavimento superior com ambientes amplos para escritórios,
+      gestão operacional, atendimento e salas executivas.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>⚡ Energia Trifásica</h3>
+    <p>
+      Infraestrutura elétrica trifásica preparada para operações comerciais,
+      equipamentos de maior potência,
+      climatização,
+      tecnologia,
+      logística e futuras expansões operacionais.
+    </p>
+  </div>
+
+</div>
+
+<div class="card" style="margin-top:22px;">
+  <p>
+    Todos os pavimentos possuem integração interna entre si,
+    permitindo operação unificada,
+    gestão centralizada
+    e flexibilidade operacional para diferentes modelos de negócio.
+  </p>
+</div>
+
+<!-- 🏗️ ESTRUTURA -->
 <h2>🏗️ Estrutura Técnica</h2>
 
 <div class="grid">
 
   <div class="card">
     <h3>Fundação</h3>
-    <p>Concreto armado de alta capacidade estrutural.</p>
+    <p>
+      Fundação em concreto armado dimensionada para elevadas cargas estruturais.
+    </p>
   </div>
 
   <div class="card">
     <h3>Superestrutura</h3>
-    <p>Pilares e vigas com distribuição eficiente de cargas.</p>
+    <p>
+      Sistema estrutural composto por pilares e vigas em concreto armado.
+    </p>
   </div>
 
   <div class="card">
     <h3>Lajes</h3>
-    <p>Lajes maciças para uso comercial intenso.</p>
+    <p>
+      Lajes maciças reforçadas para uso comercial intenso.
+    </p>
   </div>
 
 </div>
 
+<!-- 📈 EXPANSÃO -->
 <h2>📈 Potencial de Expansão</h2>
 
 <div class="card">
-<p>
-Estrutura com viabilidade técnica para expansão vertical de até 7 pavimentos,
-com forte potencial de valorização patrimonial. 💰
-</p>
+
+  <p>
+    Estrutura com viabilidade técnica para expansão vertical
+    de até 7 pavimentos,
+    ampliando significativamente o potencial de valorização,
+    ocupação comercial
+    e geração de renda imobiliária.
+  </p>
+
 </div>
 
+<!-- 💰 COMERCIAL -->
 <h2>💰 Condições Comerciais</h2>
 
 <div class="price">
-  <p><strong>Venda:</strong> mediante proposta</p>
-  <p><strong>Locação:</strong> mediante proposta</p>
+
+  <p>
+    📞 Interessados em aquisição, locação ou parceria comercial
+    podem entrar em contato para mais informações e apresentação completa do ativo.
+  </p>
+
 </div>
 
+<!-- 📞 CONTATO -->
 <h2>📞 Contato</h2>
 
 <div class="contact">
+
   <p><strong>E-mail:</strong> n74@n74.com.br</p>
   <p><strong>Telefone:</strong> (11) 95873-3142</p>
 
   <div>
+
     <a class="btn btn-primary"
        href="https://wa.me/5511958733142?text=Olá! Tenho interesse no ativo comercial de 642m² na Av. Deputado Cantídio Sampaio, 388."
        target="_blank">
        💬 WhatsApp
     </a>
 
-    <a class="btn btn-outline" href="tel:+5511958733142">
+    <a class="btn btn-outline"
+       href="tel:+5511958733142">
        📞 Ligar
     </a>
+
   </div>
+
 </div>
 
 </div>
 
 <footer>
-  🌐 <a href="https://www.n74.com.br" target="_blank">
-    www.n74.com.br — © 2026 N74 TEC | Soluções em TI 💼
+  🌐 
+  <a href="https://www.n74.com.br" target="_blank"
+     style="
+       color:rgb(0,0,255);
+       text-decoration:none;
+       font-weight:700;
+     ">
+     www.n74.com.br — © 2026 N74 TEC | Soluções em TI 💼
   </a>
 </footer>
 
